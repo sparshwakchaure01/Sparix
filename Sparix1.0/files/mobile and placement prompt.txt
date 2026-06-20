@@ -1,0 +1,174 @@
+# SPARIX GLOBAL INSTRUCTIONS (PASTE IN EVERY PROMPT)
+
+Before generating any code, carefully analyze the uploaded files:
+
+* main.css
+* main.js
+
+You MUST reuse existing styles, components, utilities, animations, buttons, cards, forms, navigation styles, footer styles, spacing systems, typography systems, and JavaScript functionality whenever possible.
+
+Do NOT recreate styles or components that already exist.
+
+Use the design system defined in main.css and main.js.
+
+---
+
+## DESIGN PRINCIPLES
+
+SPARIX is a premium Student Operating System.
+
+The design must be:
+
+* Elegant
+* Modern
+* Professional
+* Minimal
+* Luxury
+* Academic
+* Clean
+* Premium SaaS Quality
+* Highly Readable
+
+Reference quality:
+
+* Notion
+* Linear
+* Stripe
+* Framer
+* Vercel
+
+Avoid:
+
+* Childish designs
+* Gaming aesthetics
+* Neon colors
+* Excessive gradients
+* Oversized UI elements
+* Oversized typography
+* Excessive whitespace
+
+---
+
+## TYPOGRAPHY
+
+Use:
+
+* DM Serif Display (headings)
+* Plus Jakarta Sans (body)
+
+Typography should be balanced and professional.
+
+Avoid:
+
+* Huge headings
+* Giant cards
+* Giant buttons
+
+Everything should feel refined and realistic for a production SaaS product.
+
+---
+
+## RESPONSIVE REQUIREMENTS
+
+SPARIX is primarily a mobile-first platform.
+
+The website must be:
+
+* Mobile First
+* Fully Responsive
+* Tablet Optimized
+* Desktop Optimized
+
+Design mobile experience first, then scale up.
+
+---
+
+## MOBILE REQUIREMENTS
+
+Mobile experience is extremely important.
+
+Requirements:
+
+* Proper spacing
+* Proper touch targets
+* Clean navigation
+* Hamburger menu
+* Smooth mobile menu
+* No horizontal scrolling
+* No broken layouts
+* No oversized sections
+* Fast loading
+
+The mobile version should feel like a premium mobile application.
+
+---
+
+## DESKTOP REQUIREMENTS
+
+Desktop layout must NOT be zoomed-in.
+
+Avoid:
+
+* Huge text
+* Huge cards
+* Huge buttons
+* Giant spacing
+
+Use professional SaaS sizing.
+
+Examples:
+
+* Hero headings should be elegant, not oversized.
+* Cards should be compact and informative.
+* Sections should feel balanced.
+* Dashboard previews should fit naturally on screen.
+
+Desktop should look like a real commercial product, not a college project.
+
+---
+
+## NAVIGATION
+
+Every page must include:
+
+* Complete Navbar
+* Mobile Menu
+* Main Content
+* Footer
+
+Never write:
+
+* "Navbar assumed to exist"
+* "Footer assumed to exist"
+
+Generate complete page structures.
+
+---
+
+## CODE QUALITY
+
+Requirements:
+
+* Semantic HTML
+* Clean Structure
+* Accessible
+* SEO Friendly
+* Production Ready
+* Maintainable
+* Reusable
+
+Build as if the project will be publicly launched.
+
+---
+
+## FINAL RULE
+
+Always prioritize:
+
+1. Mobile Experience
+2. Readability
+3. Professional SaaS Design
+4. Consistency With Existing Files
+5. Production-Ready Quality
+
+Generate polished, launch-ready interfaces.

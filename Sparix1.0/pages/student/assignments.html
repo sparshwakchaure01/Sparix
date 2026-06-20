@@ -1,0 +1,211 @@
+cat > /mnt/user-data/outputs/student/productivity/assignments.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assignment Tracker — SPARIX</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <style>
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+    .toolbar  { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .toolbar .input-wrapper { flex: 1; min-width: 180px; }
+    @media (max-width: 640px) { .form-row { grid-template-columns: 1fr; } .toolbar { flex-direction: column; } }
+  </style>
+  <script src="../../main.js" defer></script>
+  <script src="../../js/assignments.js" defer></script>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="navbar-brand" href="../../index.html" aria-label="SPARIX Home">
+        <div class="navbar-brand-logo">S</div>
+        <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+      </a>
+      <nav class="navbar-nav" aria-label="Primary">
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../student-os.html">Student OS</a>
+        <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+        <a class="nav-link" href="tasks.html">Tasks</a>
+        
+        <a class="nav-link" href="flashcards.html">Flashcards</a>
+        <a class="nav-link" href="planner.html">Planner</a>
+        <a class="nav-link" href="notes.html">Notes</a>
+        <a class="nav-link active" href="assignments.html">Assignments</a>
+      </nav>
+      <div class="navbar-actions">
+        <a class="btn btn-primary btn-sm hide-sm" href="../../student-os.html">Dashboard</a>
+        <button class="navbar-toggle" type="button" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../student-os.html">Student OS</a>
+    <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+    <a class="nav-link" href="tasks.html">Tasks</a>
+    <a class="nav-link active" href="assignments.html">Assignments</a>
+    <a class="nav-link" href="planner.html">Planner</a>
+    <a class="nav-link" href="notes.html">Notes</a>
+    <a class="nav-link" href="flashcards.html">Flashcards</a>
+  </nav>
+
+  <main class="main-content">
+    <div class="dashboard-wrapper container">
+
+      <nav class="breadcrumbs mb-6">
+        <span class="breadcrumb-item"><a href="../../student-os.html">Student OS</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item"><a href="../../student-os.html#productivity">Productivity</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Assignment Tracker</span>
+      </nav>
+
+      <div class="dashboard-section">
+        <div class="feature-card">
+          <div class="dashboard-greeting">Productivity · Academic</div>
+          <h1 class="dashboard-title">Assignment Tracker</h1>
+          <p class="dashboard-subtitle">Track deadlines, monitor progress, and never miss a submission again.</p>
+        </div>
+      </div>
+
+      <!-- Add / Edit Form -->
+      <div class="dashboard-section" id="assignment-form-section">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">Add / Edit Assignment</h2>
+        </div>
+        <div class="card card-body">
+          <form id="assignment-form" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Assignment Name <span class="required">*</span></label>
+                <input id="a-name" type="text" class="input" placeholder="e.g. Research Paper — Climate Change" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject <span class="required">*</span></label>
+                <input id="a-subject" type="text" class="input" placeholder="e.g. Environmental Science" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Deadline</label>
+                <input id="a-deadline" type="date" class="input" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Status</label>
+                <select id="a-status" class="select">
+                  <option value="not-started">Not Started</option>
+                  <option value="in-progress">In Progress</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Progress: <span id="progress-label">0%</span></label>
+              <input id="a-progress" type="range" min="0" max="100" value="0"
+                oninput="document.getElementById('progress-label').textContent = this.value + '%'"
+                style="width:100%; accent-color: var(--color-primary); cursor:pointer;" />
+            </div>
+            <div class="flex gap-3 mt-2">
+              <button id="a-submit-btn" class="btn btn-primary">Add Assignment</button>
+              <button id="a-cancel-btn" type="button" class="btn btn-ghost">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Assignment List -->
+      <div class="dashboard-section">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">All Assignments</h2>
+        </div>
+        <div class="toolbar mb-5">
+          <div class="input-wrapper flex-1">
+            <input id="a-search" type="text" class="input" placeholder="Search assignments…" />
+          </div>
+          <select id="a-sort" class="select" style="min-width:160px; width:auto;">
+            <option value="deadline">Sort by Deadline</option>
+            <option value="name">Sort by Name</option>
+            <option value="progress">Sort by Progress</option>
+          </select>
+        </div>
+        <div id="assignment-list">
+          <div class="empty-state">
+            <div class="empty-state-icon">📚</div>
+            <h3 class="empty-state-title">No assignments yet</h3>
+            <p class="empty-state-desc">Add your first assignment using the form above.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="navbar-brand">
+            <div class="navbar-brand-logo">S</div>
+            <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+          </div>
+          <p>Premium student operating system designed for elegant, focused, and real academic workflows.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Productivity</div>
+          <div class="footer-links">
+            <a class="footer-link" href="pomodoro.html">Pomodoro</a>
+            <a class="footer-link" href="tasks.html">Tasks</a>
+            <a class="footer-link" href="planner.html">Planner</a>
+            <a class="footer-link" href="notes.html">Notes</a>
+            <a class="footer-link" href="flashcards.html">Flashcards</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Student OS</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../student-os.html">Dashboard</a>
+            <a class="footer-link" href="../../student-os.html#productivity">Productivity</a>
+            <a class="footer-link" href="../../student-os.html#college-tools">College Tools</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">About</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../about.html">About</a>
+            <a class="footer-link" href="../../contact.html">Contact</a>
+            <a class="footer-link" href="../../privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 SPARIX</p><p>All rights reserved.</p></div>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    const toggle = document.querySelector('.navbar-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    toggle?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.classList.contains('open')) return;
+      if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+        mobileNav.classList.remove('open'); toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
+HTMLEOF
+echo "assignments.html done"

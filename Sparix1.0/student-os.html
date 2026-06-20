@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPARIX Student OS Dashboard</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="navbar">
+      <div class="navbar-inner container">
+        <a class="navbar-brand" href="index.html" aria-label="SPARIX Home">
+          <div class="navbar-brand-logo">S</div>
+          <div>
+            <div class="navbar-brand-name">SPARIX</div>
+            <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+          </div>
+        </a>
+
+        <nav class="navbar-nav" aria-label="Primary">
+          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link set active" href="student-os.html">Student OS</a>
+          <a class="nav-link" href="resources/index.html">Resources</a>
+          <a class="nav-link" href="developer/index.html">Developer Hub</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <a class="btn btn-primary btn-sm hide-sm" href="#productivity">Explore</a>
+          <button class="navbar-toggle" type="button" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+      <a class="nav-link active" href="index.html">Home</a>
+      <a class="nav-link active" href="student-os.html">Student OS</a>
+      <a class="nav-link" href="resources/index.html">Resources</a>
+      <a class="nav-link" href="developer/index.html">Developer Hub</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+
+    <main class="main-content">
+      <div class="dashboard-wrapper container">
+        <section class="dashboard-section">
+          <div class="card feature-card">
+            <div class="dashboard-greeting">Student OS Dashboard</div>
+            <h1 class="dashboard-title">Your central workspace for productivity, academics and career growth.</h1>
+            <p class="dashboard-subtitle">A refined command center for real student tools, organized as clear entry points for what comes next.</p>
+            <div class="flex flex-wrap gap-3 mt-6">
+              <a class="btn btn-primary" href="#productivity">Explore Productivity</a>
+              <a class="btn btn-outline" href="#college-tools">Open College Tools</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Quick Access</h2>
+          </div>
+          <div class="grid grid-auto gap-5">
+            <a class="tool-card card-hover" href="productivity/index.html">
+              <div class="tool-card-icon">⚡</div>
+              <div class="tool-card-title">Productivity Tools</div>
+              <div class="tool-card-desc">Focus, plan, and build better study habits with fast access to essential tools.</div>
+              <span class="btn btn-ghost btn-sm mt-auto">Open →</span>
+            </a>
+            <a class="tool-card card-hover" href="college/index.html">
+              <div class="tool-card-icon">🎓</div>
+              <div class="tool-card-title">College Tools</div>
+              <div class="tool-card-desc">Navigate academic utilities for attendance, grades, exams, and timetables.</div>
+              <span class="btn btn-ghost btn-sm mt-auto">Open →</span>
+            </a>
+            <a class="tool-card card-hover" href="career/index.html">
+              <div class="tool-card-icon">🚀</div>
+              <div class="tool-card-title">Career Tools</div>
+              <div class="tool-card-desc">Move from student life to career readiness with practical entry points.</div>
+              <span class="btn btn-ghost btn-sm mt-auto">Open →</span>
+            </a>
+            <a class="tool-card card-hover" href="../resources/index.html">
+              <div class="tool-card-icon">📚</div>
+              <div class="tool-card-title">Resources</div>
+              <div class="tool-card-desc">Jump to notes, study materials, semester resources, and downloads.</div>
+              <span class="btn btn-ghost btn-sm mt-auto">Open →</span>
+            </a>
+            <a class="tool-card card-hover" href="../developer/index.html">
+              <div class="tool-card-icon">🛠️</div>
+              <div class="tool-card-title">Developer Hub</div>
+              <div class="tool-card-desc">Access future developer utilities and integrations in one elegant hub.</div>
+              <span class="btn btn-ghost btn-sm mt-auto">Open →</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="productivity">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Productivity Tools</h2>
+          </div>
+          <div class="grid grid-auto gap-5">
+            <a class="tool-card card-hover" href="pages/student/pomodoro.html"><div class="tool-card-icon">⏱</div><div class="tool-card-title">Pomodoro Timer</div><div class="tool-card-desc">Focused work sessions for deep study and structured breaks.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="pages/student/tasks.html"><div class="tool-card-icon">✅</div><div class="tool-card-title">Task Manager</div><div class="tool-card-desc">A clean entry point for managing student tasks and priorities.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="pages/student/planner.html"><div class="tool-card-icon">🗓</div><div class="tool-card-title">Study Planner</div><div class="tool-card-desc">Plan sessions and organize study goals with a compact workflow.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="pages/student/notes.html"><div class="tool-card-icon">📝</div><div class="tool-card-title">Notes</div><div class="tool-card-desc">A dedicated space for structured note-taking and organization.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="pages/student/flashcards.html"><div class="tool-card-icon">🧠</div><div class="tool-card-title">Flashcards</div><div class="tool-card-desc">Fast access to future spaced repetition and revision workflows.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="pages/student/study-stats.html"><div class="tool-card-icon">📈</div><div class="tool-card-title">Study Statistics</div><div class="tool-card-desc">A future entry point for real progress summaries and tracking.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+          </div>
+        </section>
+
+        <section class="dashboard-section" id="college-tools">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">College Tools</h2>
+          </div>
+          <div class="grid grid-auto gap-5">
+            <a class="tool-card card-hover" href="college/attendance-calculator.html"><div class="tool-card-icon">📍</div><div class="tool-card-title">Attendance Calculator</div><div class="tool-card-desc">A navigation card for attendance-related student workflows.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/attendance-predictor.html"><div class="tool-card-icon">🔮</div><div class="tool-card-title">Attendance Predictor</div><div class="tool-card-desc">A future entry point for planning attendance responsibly.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/gpa-calculator.html"><div class="tool-card-icon">🧮</div><div class="tool-card-title">GPA Calculator</div><div class="tool-card-desc">Navigate to a clean grade-point calculation workspace.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/cgpa-calculator.html"><div class="tool-card-icon">📊</div><div class="tool-card-title">CGPA Calculator</div><div class="tool-card-desc">A future page for cumulative academic performance calculations.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/sgpa-calculator.html"><div class="tool-card-icon">🎯</div><div class="tool-card-title">SGPA Calculator</div><div class="tool-card-desc">A focused tool entry for semester-based academic tracking.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/marks-calculator.html"><div class="tool-card-icon">✏️</div><div class="tool-card-title">Marks Calculator</div><div class="tool-card-desc">A simple future gateway for marks and score workflows.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/grade-predictor.html"><div class="tool-card-icon">🧭</div><div class="tool-card-title">Grade Predictor</div><div class="tool-card-desc">Navigate to future grade planning and estimation tools.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/timetable-generator.html"><div class="tool-card-icon">🧾</div><div class="tool-card-title">Timetable Generator</div><div class="tool-card-desc">A real entry point for future timetable generation features.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="college/exam-countdown.html"><div class="tool-card-icon">⏳</div><div class="tool-card-title">Exam Countdown</div><div class="tool-card-desc">Quick access to an upcoming exam planning experience.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Career Hub</h2>
+          </div>
+          <div class="grid grid-auto gap-5">
+            <a class="tool-card card-hover" href="career/resume-builder.html"><div class="tool-card-icon">📄</div><div class="tool-card-title">Resume Builder</div><div class="tool-card-desc">A polished entry point for future resume creation workflows.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="career/ats-checker.html"><div class="tool-card-icon">🧷</div><div class="tool-card-title">ATS Checker</div><div class="tool-card-desc">Prepare for future resume parsing and optimization tools.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="career/portfolio-generator.html"><div class="tool-card-icon">🎨</div><div class="tool-card-title">Portfolio Generator</div><div class="tool-card-desc">A future launchpad for building a professional portfolio.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="career/internship-tracker.html"><div class="tool-card-icon">🧳</div><div class="tool-card-title">Internship Tracker</div><div class="tool-card-desc">Organize internship progress with a clean future workspace.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="career/placement-tracker.html"><div class="tool-card-icon">🏁</div><div class="tool-card-title">Placement Tracker</div><div class="tool-card-desc">Track placement preparation and progression entry points.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Resources</h2>
+          </div>
+          <div class="grid grid-auto gap-5">
+            <a class="tool-card card-hover" href="../resources/notes-repository.html"><div class="tool-card-icon">📁</div><div class="tool-card-title">Notes Repository</div><div class="tool-card-desc">A curated future landing space for organized notes.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="../resources/study-materials.html"><div class="tool-card-icon">📘</div><div class="tool-card-title">Study Materials</div><div class="tool-card-desc">Access study material navigation in one elegant place.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="../resources/semester-resources.html"><div class="tool-card-icon">🗃</div><div class="tool-card-title">Semester Resources</div><div class="tool-card-desc">A clean doorway to semester-based content collections.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+            <a class="tool-card card-hover" href="../resources/downloads.html"><div class="tool-card-icon">⬇️</div><div class="tool-card-title">Downloads</div><div class="tool-card-desc">A simple hub for future downloadable student assets.</div><span class="btn btn-ghost btn-sm mt-auto">Open Tool</span></a>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="dashboard-section-header">
+            <h2 class="dashboard-section-title">Student Roadmap</h2>
+          </div>
+          <div class="card card-body">
+            <div class="grid gap-4">
+              <div class="badge badge-success">Student Dashboard ✓</div>
+              <div class="badge badge-neutral">Pomodoro Timer</div>
+              <div class="badge badge-neutral">Task Manager</div>
+              <div class="badge badge-neutral">Study Planner</div>
+              <div class="badge badge-neutral">Notes</div>
+              <div class="badge badge-neutral">Flashcards</div>
+              <div class="badge badge-neutral">Attendance Tools</div>
+              <div class="badge badge-neutral">Career Tools</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="dashboard-section">
+          <div class="card feature-card">
+            <div class="dashboard-greeting">Call to action</div>
+            <h2 class="type-section mb-4">Build Better Study Systems With SPARIX</h2>
+            <div class="flex flex-wrap gap-3">
+              <a class="btn btn-primary" href="#productivity">Explore Productivity</a>
+              <a class="btn btn-outline" href="#college-tools">View College Tools</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <div class="navbar-brand">
+              <div class="navbar-brand-logo">S</div>
+              <div>
+                <div class="navbar-brand-name">SPARIX</div>
+                <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+              </div>
+            </div>
+            <p>Premium student operating system designed for elegant, focused, and real academic workflows.</p>
+          </div>
+          <div>
+            <div class="footer-col-title">Student OS</div>
+            <div class="footer-links">
+              <a class="footer-link" href="student-os.html">Dashboard</a>
+              <a class="footer-link" href="#productivity">Productivity</a>
+              <a class="footer-link" href="#college-tools">College Tools</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">College Hub</div>
+            <div class="footer-links">
+              <a class="footer-link" href="../resources/index.html">Resources</a>
+              <a class="footer-link" href="../developer/index.html">Developer Hub</a>
+              <a class="footer-link" href="../career/index.html">Career Hub</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">About</div>
+            <div class="footer-links">
+              <a class="footer-link" href="../about.html">About</a>
+              <a class="footer-link" href="../contact.html">Contact</a>
+              <a class="footer-link" href="../privacy.html">Privacy</a>
+              <a class="footer-link" href="../terms.html">Terms</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 SPARIX</p>
+          <p>All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.navbar-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const links = document.querySelectorAll('.navbar-nav .nav-link, .mobile-nav .nav-link');
+      const sections = [...document.querySelectorAll('section[id]')];
+
+      function setActive(id) {
+        links.forEach(link => {
+          const active = (link.getAttribute('href') || '').endsWith(`#${id}`) || link.getAttribute('href') === 'student-os.html' && id === '';
+          link.classList.toggle('active', active);
+        });
+      }
+
+      toggle?.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileNav.classList.contains('open')) return;
+        if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+          mobileNav.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const io = new IntersectionObserver((entries) => {
+        const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible && visible.target.id) setActive(visible.target.id);
+      }, { threshold: [0.2, 0.4, 0.6] });
+
+      sections.forEach(section => io.observe(section));
+      setActive('productivity');
+    })();
+  </script>
+</body>
+</html>

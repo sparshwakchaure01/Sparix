@@ -1,0 +1,799 @@
+<!-- Place this in contact.html -->
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact SPARIX — Questions, feedback, feature requests, bug reports, collaborations, and partnerships are welcome." />
+  <title>Contact SPARIX | Study. Build. Grow.</title>
+
+  <link rel="stylesheet" href="main.css" />
+
+  <style>
+    /* Page-specific enhancements only */
+    .contact-hero {
+      padding: 5.5rem 0 2rem;
+    }
+    .contact-hero-inner {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 2rem;
+      align-items: end;
+    }
+    .contact-hero-copy {
+      max-width: 44rem;
+    }
+    .contact-kicker {
+      display: inline-flex;
+      margin-bottom: 1rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .contact-card {
+      height: 100%;
+    }
+    .contact-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+      background: var(--color-primary-subtle);
+      display: grid;
+      place-items: center;
+      color: var(--color-primary);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .contact-card-link {
+      margin-top: 1rem;
+      display: inline-flex;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-primary);
+    }
+    .section-heading {
+      margin-bottom: 1.25rem;
+    }
+    .section-lead {
+      max-width: 42rem;
+      margin-bottom: 0;
+    }
+    .form-shell {
+      padding: 1.5rem;
+    }
+    .forms-stack {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .support-panel {
+      position: sticky;
+      top: 5rem;
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+    .social-link-card {
+      text-align: center;
+      padding: 1.25rem;
+    }
+    .social-link-card .contact-card-icon {
+      margin-inline: auto;
+    }
+    .cta-band {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    @media (max-width: 1024px) {
+      .contact-hero-inner,
+      .faq-layout {
+        grid-template-columns: 1fr;
+      }
+      .support-panel {
+        position: static;
+      }
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .span-4, .span-6, .span-8, .span-12 {
+        grid-column: span 12;
+      }
+    }
+    @media (max-width: 640px) {
+      .contact-hero {
+        padding-top: 4.75rem;
+      }
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-shell {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- Header/Navbar -->
+    <header class="navbar" role="banner">
+      <div class="navbar-inner container">
+        <a class="navbar-brand" href="index.html" aria-label="SPARIX Home">
+          <div class="navbar-brand-logo">S</div>
+          <div>
+            <div class="navbar-brand-name">SPARIX</div>
+            <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+          </div>
+        </a>
+
+        <nav class="navbar-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="student-os.html">Student OS</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="developer-hub.html">Developer Hub</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link active" href="contact.html" aria-current="page">Contact</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button class="btn-icon" type="button" data-theme-toggle aria-label="Toggle theme">☾</button>
+          <button class="navbar-toggle" type="button" aria-label="Open mobile navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="student-os.html">Student OS</a>
+      <a class="nav-link" href="resources.html">Resources</a>
+      <a class="nav-link" href="developer-hub.html">Developer Hub</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link active" href="contact.html" aria-current="page">Contact</a>
+    </nav>
+
+    <main class="main-content">
+      <!-- Hero -->
+      <section class="contact-hero">
+        <div class="container">
+          <div class="contact-hero-inner">
+            <div class="contact-hero-copy animate-slide-up">
+              <span class="badge badge-primary contact-kicker">Contact SPARIX</span>
+              <h1 class="type-hero mb-4">Contact SPARIX</h1>
+              <p class="type-body lead section-lead">
+                Questions, feedback, feature requests, bug reports, collaborations, and partnerships are welcome.
+                We read every message and use your input to improve the platform for students, builders, and teams.
+              </p>
+            </div>
+            <div class="card p-6 animate-slide-up delay-1">
+              <div class="stats-card-header mb-4">
+                <span class="stats-card-label">Response Focus</span>
+                <span class="badge badge-neutral">Fast, thoughtful support</span>
+              </div>
+              <p class="type-body-sm mb-4">
+                For urgent bugs or product issues, choose the dedicated forms below so we can route your message faster.
+              </p>
+              <div class="grid gap-3">
+                <div class="alert alert-neutral">
+                  <div class="alert-content">
+                    <div class="alert-title">General Support</div>
+                    <div class="alert-body">help@sparix.app</div>
+                  </div>
+                </div>
+                <div class="alert alert-neutral">
+                  <div class="alert-content">
+                    <div class="alert-title">Partnerships</div>
+                    <div class="alert-body">partners@sparix.app</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Information Cards -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="type-section mb-2">Ways to reach us</h2>
+            <p class="section-lead">Choose the contact path that best fits your message.</p>
+          </div>
+
+          <div class="contact-grid">
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">✉</div>
+              <h3 class="type-card-title mb-2">Email</h3>
+              <p class="type-body-sm">hello@sparix.app for general inquiries and product questions.</p>
+              <a class="contact-card-link" href="mailto:hello@sparix.app">Send email</a>
+            </article>
+
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">🛟</div>
+              <h3 class="type-card-title mb-2">General Support</h3>
+              <p class="type-body-sm">help@sparix.app for account help, access, and usage questions.</p>
+              <a class="contact-card-link" href="mailto:help@sparix.app">Get support</a>
+            </article>
+
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">✨</div>
+              <h3 class="type-card-title mb-2">Feature Requests</h3>
+              <p class="type-body-sm">Suggest improvements, workflows, or new tools for SPARIX.</p>
+              <a class="contact-card-link" href="#feature-request-form">Request a feature</a>
+            </article>
+
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">🐞</div>
+              <h3 class="type-card-title mb-2">Bug Reports</h3>
+              <p class="type-body-sm">Report issues, broken UI, or unexpected behavior.</p>
+              <a class="contact-card-link" href="#bug-report-form">Report a bug</a>
+            </article>
+
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">🤝</div>
+              <h3 class="type-card-title mb-2">Partnerships</h3>
+              <p class="type-body-sm">partner@sparix.app for universities, creators, and organizations.</p>
+              <a class="contact-card-link" href="mailto:partner@sparix.app">Discuss partnerships</a>
+            </article>
+
+            <article class="card card-hover contact-card span-4 p-6">
+              <div class="contact-card-icon">◌</div>
+              <h3 class="type-card-title mb-2">Social Media</h3>
+              <p class="type-body-sm">Follow SPARIX for announcements, updates, and product news.</p>
+              <a class="contact-card-link" href="#social">View social links</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Contact Form -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="span-8">
+              <div class="card">
+                <div class="card-header">
+                  <div>
+                    <h2 class="card-title">Main Contact Form</h2>
+                    <p class="card-description">Use this for general questions and messages.</p>
+                  </div>
+                </div>
+                <div class="card-body form-shell">
+                  <form id="contact-form" novalidate>
+                    <div class="grid grid-cols-2 gap-4">
+                      <div class="form-group">
+                        <label class="form-label" for="contact-name">Full Name <span class="required">*</span></label>
+                        <input class="input" id="contact-name" name="name" type="text" required />
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="contact-email">Email <span class="required">*</span></label>
+                        <input class="input" id="contact-email" name="email" type="email" required />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="contact-subject">Subject <span class="required">*</span></label>
+                      <input class="input" id="contact-subject" name="subject" type="text" required />
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="contact-category">Category <span class="required">*</span></label>
+                      <select class="select" id="contact-category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Support</option>
+                        <option value="feature">Feature Request</option>
+                        <option value="bug">Bug Report</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="contact-message">Message <span class="required">*</span></label>
+                      <textarea class="textarea" id="contact-message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <aside class="span-4">
+              <div class="support-panel">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <div>
+                      <h3 class="card-title">Quick details</h3>
+                      <p class="card-description">For faster routing.</p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <p class="type-body-sm mb-2"><strong>Email:</strong> hello@sparix.app</p>
+                    <p class="type-body-sm mb-2"><strong>Support:</strong> help@sparix.app</p>
+                    <p class="type-body-sm mb-0"><strong>Partnerships:</strong> partner@sparix.app</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <div>
+                      <h3 class="card-title">Message tips</h3>
+                      <p class="card-description">Make your request easier to process.</p>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <ul class="type-body-sm" style="display:grid; gap:.75rem;">
+                      <li>• Include the platform area or page.</li>
+                      <li>• Add screenshots for bug reports.</li>
+                      <li>• Mention expected behavior clearly.</li>
+                      <li>• For partnerships, share your organization.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback / Bug / Feature Forms -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="forms-stack">
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Feedback Form</h2>
+                  <p class="card-description">Share product feedback or suggestions.</p>
+                </div>
+              </div>
+              <div class="card-body form-shell">
+                <form id="feedback-form" novalidate>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="feedback-name">Name <span class="required">*</span></label>
+                      <input class="input" id="feedback-name" name="name" type="text" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="feedback-email">Email <span class="required">*</span></label>
+                      <input class="input" id="feedback-email" name="email" type="email" required />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="feedback-type">Feedback Type <span class="required">*</span></label>
+                      <select class="select" id="feedback-type" name="type" required>
+                        <option value="">Select type</option>
+                        <option value="ui">UI/Design</option>
+                        <option value="ux">UX/Workflow</option>
+                        <option value="content">Content</option>
+                        <option value="performance">Performance</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="feedback-rating">Rating <span class="required">*</span></label>
+                      <select class="select" id="feedback-rating" name="rating" required>
+                        <option value="">Select rating</option>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="3">3 - Good</option>
+                        <option value="2">2 - Needs Work</option>
+                        <option value="1">1 - Poor</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="feedback-comments">Comments <span class="required">*</span></label>
+                    <textarea class="textarea" id="feedback-comments" name="comments" rows="5" required></textarea>
+                  </div>
+
+                  <button class="btn btn-primary" type="submit">Submit Feedback</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="card" id="bug-report-form">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Bug Report Form</h2>
+                  <p class="card-description">Report issues so we can fix them quickly.</p>
+                </div>
+              </div>
+              <div class="card-body form-shell">
+                <form id="bug-form" novalidate>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="bug-name">Name <span class="required">*</span></label>
+                      <input class="input" id="bug-name" name="name" type="text" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="bug-email">Email <span class="required">*</span></label>
+                      <input class="input" id="bug-email" name="email" type="email" required />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="bug-feature">Feature Name <span class="required">*</span></label>
+                    <input class="input" id="bug-feature" name="feature" type="text" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="bug-description">Issue Description <span class="required">*</span></label>
+                    <textarea class="textarea" id="bug-description" name="issue" rows="4" required></textarea>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="bug-expected">Expected Result <span class="required">*</span></label>
+                      <textarea class="textarea" id="bug-expected" name="expected" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="bug-actual">Actual Result <span class="required">*</span></label>
+                      <textarea class="textarea" id="bug-actual" name="actual" rows="4" required></textarea>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Submit Bug Report</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="card" id="feature-request-form">
+              <div class="card-header">
+                <div>
+                  <h2 class="card-title">Feature Request Form</h2>
+                  <p class="card-description">Tell us what you'd like SPARIX to support next.</p>
+                </div>
+              </div>
+              <div class="card-body form-shell">
+                <form id="feature-form" novalidate>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="feature-name">Name <span class="required">*</span></label>
+                      <input class="input" id="feature-name" name="name" type="text" required />
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="feature-email">Email <span class="required">*</span></label>
+                      <input class="input" id="feature-email" name="email" type="email" required />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="feature-title">Feature Title <span class="required">*</span></label>
+                    <input class="input" id="feature-title" name="title" type="text" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="feature-description">Feature Description <span class="required">*</span></label>
+                    <textarea class="textarea" id="feature-description" name="description" rows="4" required></textarea>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="form-group">
+                      <label class="form-label" for="feature-reason">Reason <span class="required">*</span></label>
+                      <textarea class="textarea" id="feature-reason" name="reason" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="feature-priority">Priority <span class="required">*</span></label>
+                      <select class="select" id="feature-priority" name="priority" required>
+                        <option value="">Select priority</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                        <option value="critical">Critical</option>
+                      </select>
+                    </div>
+                  </div>
+                  <button class="btn btn-primary" type="submit">Submit Feature Request</button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section-sm">
+        <div class="container">
+          <div class="faq-layout">
+            <div>
+              <h2 class="type-section mb-2">Frequently asked questions</h2>
+              <p class="section-lead mb-6">Quick answers to common contact and support questions.</p>
+
+              <div class="accordion" data-multi>
+                <div class="accordion-item">
+                  <button class="accordion-trigger" type="button" aria-expanded="false">
+                    <span>How do I report a bug?</span>
+                    <span class="accordion-icon">⌄</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                      Use the Bug Report form above and include the feature name, issue description, expected result, and actual result.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-trigger" type="button" aria-expanded="false">
+                    <span>Can I suggest features?</span>
+                    <span class="accordion-icon">⌄</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                      Yes. The Feature Request form is the best place to share ideas, workflows, and improvements you'd like to see.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-trigger" type="button" aria-expanded="false">
+                    <span>Is SPARIX free?</span>
+                    <span class="accordion-icon">⌄</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                      SPARIX may offer different access levels depending on the product rollout. Check the latest pricing or onboarding details on the main site.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <button class="accordion-trigger" type="button" aria-expanded="false">
+                    <span>Do I need an account?</span>
+                    <span class="accordion-icon">⌄</span>
+                  </button>
+                  <div class="accordion-body">
+                    <div class="accordion-body-inner">
+                      Some tools are public while others may require an account for saving progress, syncing data, or accessing advanced workflows.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-6">
+              <h3 class="type-card-title mb-2">Best way to get a fast reply</h3>
+              <p class="type-body-sm mb-4">
+                Route your message through the matching form and include concrete details. Clear context helps us respond faster.
+              </p>
+              <div class="grid gap-3">
+                <div class="alert alert-info">
+                  <div class="alert-content">
+                    <div class="alert-title">General questions</div>
+                    <div class="alert-body">Use the main contact form.</div>
+                  </div>
+                </div>
+                <div class="alert alert-warning">
+                  <div class="alert-content">
+                    <div class="alert-title">Bug reports</div>
+                    <div class="alert-body">Attach exact steps if possible.</div>
+                  </div>
+                </div>
+                <div class="alert alert-success">
+                  <div class="alert-content">
+                    <div class="alert-title">Partnerships</div>
+                    <div class="alert-body">Include your organization and goals.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Section -->
+      <section class="section-sm" id="social">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="type-section mb-2">Follow SPARIX</h2>
+            <p class="section-lead">Stay connected across our public channels.</p>
+          </div>
+
+          <div class="social-grid">
+            <a class="card social-link-card hover-lift" href="#" target="_blank" rel="noopener noreferrer">
+              <div class="contact-card-icon">⌂</div>
+              <div class="type-card-title">GitHub</div>
+              <div class="type-small">Source and updates</div>
+            </a>
+            <a class="card social-link-card hover-lift" href="#" target="_blank" rel="noopener noreferrer">
+              <div class="contact-card-icon">in</div>
+              <div class="type-card-title">LinkedIn</div>
+              <div class="type-small">Professional network</div>
+            </a>
+            <a class="card social-link-card hover-lift" href="#" target="_blank" rel="noopener noreferrer">
+              <div class="contact-card-icon">◎</div>
+              <div class="type-card-title">Instagram</div>
+              <div class="type-small">Visual updates</div>
+            </a>
+            <a class="card social-link-card hover-lift" href="#" target="_blank" rel="noopener noreferrer">
+              <div class="contact-card-icon">X</div>
+              <div class="type-card-title">X/Twitter</div>
+              <div class="type-small">Product news</div>
+            </a>
+            <a class="card social-link-card hover-lift" href="mailto:hello@sparix.app">
+              <div class="contact-card-icon">✉</div>
+              <div class="type-card-title">Email</div>
+              <div class="type-small">Direct contact</div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section cta-band">
+        <div class="container text-center">
+          <h2 class="type-section mb-3">Help Us Build A Better Student Platform</h2>
+          <p class="section-lead mx-auto mb-6">Your feedback shapes the tools, workflows, and experiences we build next.</p>
+          <a class="btn btn-primary btn-lg" href="#contact-form">Start the conversation</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a class="navbar-brand" href="index.html" aria-label="SPARIX Home">
+              <div class="navbar-brand-logo">S</div>
+              <div>
+                <div class="navbar-brand-name">SPARIX</div>
+                <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+              </div>
+            </a>
+            <p>Premium student operating system for learning, building, and career growth.</p>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Quick Links</div>
+            <div class="footer-links">
+              <a class="footer-link" href="index.html">Home</a>
+              <a class="footer-link" href="student-os.html">Student OS</a>
+              <a class="footer-link" href="about.html">About</a>
+              <a class="footer-link" href="contact.html">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Resources</div>
+            <div class="footer-links">
+              <a class="footer-link" href="resources.html">Resources</a>
+              <a class="footer-link" href="developer-hub.html">Developer Hub</a>
+              <a class="footer-link" href="#bug-report-form">Bug Reports</a>
+              <a class="footer-link" href="#feature-request-form">Feature Requests</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Social Links</div>
+            <div class="footer-links">
+              <a class="footer-link" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a class="footer-link" href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a class="footer-link" href="#" target="_blank" rel="noopener noreferrer">X/Twitter</a>
+              <a class="footer-link" href="mailto:hello@sparix.app">Email</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 SPARIX. All rights reserved.</p>
+          <p>Study. Build. Grow.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    (function () {
+      const mobileToggle = document.querySelector('.navbar-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      if (mobileToggle && mobileNav) {
+        mobileToggle.addEventListener('click', () => {
+          const open = mobileNav.classList.toggle('open');
+          mobileToggle.classList.toggle('open', open);
+          mobileToggle.setAttribute('aria-expanded', String(open));
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+
+        mobileNav.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            mobileToggle.classList.remove('open');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      const emailOk = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+      const required = (value) => value.trim().length > 0;
+
+      function validateForm(form, fields) {
+        let firstInvalid = null;
+        for (const field of fields) {
+          const el = form.elements[field];
+          if (!el) continue;
+          const value = (el.value || '').trim();
+          const ok = el.type === 'email' ? emailOk(value) : required(value);
+          if (!ok && !firstInvalid) firstInvalid = el;
+          if (ok) {
+            el.classList.remove('error');
+            el.setAttribute('aria-invalid', 'false');
+          } else {
+            el.classList.add('error');
+            el.setAttribute('aria-invalid', 'true');
+          }
+        }
+        return firstInvalid;
+      }
+
+      function bindForm(formId, fields, successTitle) {
+        const form = document.getElementById(formId);
+        if (!form) return;
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const invalid = validateForm(form, fields);
+          if (invalid) {
+            invalid.focus();
+            if (window.Toast?.error) {
+              Toast.error('Validation error', 'Please complete all required fields with valid information.');
+            } else {
+              alert('Please complete all required fields with valid information.');
+            }
+            return;
+          }
+
+          form.reset();
+          form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+          if (window.Toast?.success) {
+            Toast.success(successTitle, 'Your message has been received.');
+          } else {
+            alert('Your message has been received.');
+          }
+        });
+
+        form.querySelectorAll('input, textarea, select').forEach((field) => {
+          field.addEventListener('input', () => {
+            if (field.hasAttribute('required') && field.value.trim()) {
+              field.classList.remove('error');
+              field.setAttribute('aria-invalid', 'false');
+            }
+          });
+          field.addEventListener('blur', () => {
+            if (field.hasAttribute('required')) {
+              const ok = field.type === 'email'
+                ? emailOk(field.value)
+                : required(field.value);
+              field.classList.toggle('error', !ok);
+              field.setAttribute('aria-invalid', String(!ok));
+            }
+          });
+        });
+      }
+
+      bindForm('contact-form', ['name', 'email', 'subject', 'category', 'message'], 'Message sent');
+      bindForm('feedback-form', ['name', 'email', 'type', 'rating', 'comments'], 'Feedback submitted');
+      bindForm('bug-form', ['name', 'email', 'feature', 'issue', 'expected', 'actual'], 'Bug report submitted');
+      bindForm('feature-form', ['name', 'email', 'title', 'description', 'reason', 'priority'], 'Feature request submitted');
+    })();
+  </script>
+</body>
+</html>

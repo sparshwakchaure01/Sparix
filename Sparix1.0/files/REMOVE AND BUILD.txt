@@ -1,0 +1,35 @@
+STUDENT OS
+
+What to REMOVE for now
+
+Don't build:
+
+Upcoming Assignments Widget
+Recent Activity
+Today's Schedule
+Study Streak
+Analytics Dashboard
+Notifications
+Cloud Sync
+Login System
+User Profiles
+Backend Database
+
+Because all of these need stored user data.
+
+What to KEEP in Student Dashboard
+
+Build only things that actually work immediately:
+
+Student Dashboard
+Welcome Section
+Student OS Overview
+Quick Access Cards
+Productivity Tools Card
+College Tools Card
+Career Tools Card
+Resources Card
+Developer Hub Card
+Search Bar
+Navigation Sidebar
+Feature Counters (static)

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ===================================================== -->
+  <!-- META INFORMATION -->
+  <!-- ===================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SPARIX is a premium Student Operating System combining productivity, academic, career, resource, and developer tools in one elegant platform." />
+  <meta name="keywords" content="SPARIX, student operating system, productivity, college hub, career hub, developer tools, study planner, resume builder" />
+  <meta name="theme-color" content="#EDE6DA" />
+  <title>SPARIX — Study. Build. Grow.</title>
+
+  <!-- ===================================================== -->
+  <!-- FONTS / STYLESHEETS -->
+  <!-- ===================================================== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="main.css" />
+
+  <!-- ===================================================== -->
+  <!-- PAGE-SPECIFIC STYLES -->
+  <!-- ===================================================== -->
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+    .hero {
+      padding: 2.25rem 0 2rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem .75rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-full);
+      background: rgba(255,255,255,.65);
+      color: var(--text-secondary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-copy p { max-width: 56ch; }
+    .hero-actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.5rem; }
+    .hero-meta { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.25rem; }
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .hero-visual::before,
+    .hero-visual::after {
+      content:"";
+      position:absolute;
+      border-radius: 999px;
+      background: radial-gradient(circle at center, rgba(158,118,85,.18), rgba(158,118,85,0));
+      filter: blur(10px);
+      pointer-events:none;
+    }
+    .hero-visual::before { width: 22rem; height: 22rem; top: 1rem; right: 1rem; }
+    .hero-visual::after { width: 15rem; height: 15rem; bottom: 2rem; left: 0; }
+    .device-shell {
+      position: relative;
+      width: min(100%, 520px);
+      background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.95));
+      border: 1px solid var(--border-light);
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow-2xl);
+      padding: 1rem;
+      z-index: 1;
+    }
+    .device-top {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.75rem;
+      padding: .5rem .75rem 1rem;
+      color: var(--text-muted);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+    }
+    .dots { display:flex; gap:.35rem; }
+    .dots span { width:.55rem; height:.55rem; border-radius:50%; background: var(--border-mid); }
+    .dashboard-grid {
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: .75rem;
+    }
+    .dash-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: 1rem;
+      padding: .9rem;
+      box-shadow: var(--shadow-sm);
+      min-height: 92px;
+    }
+    .dash-card h4, .dash-card h5 { margin-bottom: .25rem; }
+    .dash-card p { margin-bottom:0; font-size: var(--text-xs); }
+    .dash-attendance { grid-column: span 4; }
+    .dash-gpa { grid-column: span 4; }
+    .dash-pomo { grid-column: span 4; }
+    .dash-assignments { grid-column: span 7; }
+    .dash-notes { grid-column: span 5; }
+    .dash-resume { grid-column: span 5; }
+    .dash-exams { grid-column: span 7; }
+    .ring {
+      width: 70px; height: 70px; border-radius: 50%;
+      background: conic-gradient(var(--color-primary) 0 78%, var(--bg-surface-3) 78% 100%);
+      display:grid; place-items:center; margin-top:.35rem;
+    }
+    .ring::after {
+      content:"78%";
+      width: 52px; height: 52px; border-radius:50%;
+      background: var(--bg-surface);
+      display:grid; place-items:center;
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+    }
+    .mini-list { display:grid; gap:.55rem; margin-top:.75rem; }
+    .mini-item {
+      display:flex; justify-content:space-between; gap:.75rem;
+      font-size: var(--text-sm);
+      padding-bottom:.55rem;
+      border-bottom:1px solid var(--border-light);
+    }
+    .mini-item:last-child { border-bottom:none; padding-bottom:0; }
+    .section-heading {
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:1rem;
+      margin-bottom:1.25rem;
+    }
+    .section-heading p { max-width: 64ch; margin:0; }
+    .section-kicker {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: .35rem;
+    }
+    .profile-grid,
+    .hub-grid,
+    .features-grid,
+    .preview-grid,
+    .roadmap-grid {
+      display:grid;
+      gap: 1rem;
+    }
+    .profile-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .hub-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .preview-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .roadmap-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .profile-card, .hub-card, .why-card, .preview-card, .roadmap-card {
+      height: 100%;
+    }
+    .profile-card .badge,
+    .hub-card .badge,
+    .roadmap-card .badge { margin-bottom: .85rem; }
+    .profile-card ul, .hub-card ul, .preview-card ul { display:grid; gap:.45rem; margin-top:.85rem; }
+    .profile-card li, .hub-card li, .preview-card li { font-size: var(--text-sm); color: var(--text-secondary); }
+    .timeline {
+      display:grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      counter-reset: step;
+    }
+    .timeline-card {
+      position: relative;
+      padding-top: 2.75rem;
+    }
+    .timeline-card::before {
+      counter-increment: step;
+      content: counter(step);
+      position:absolute;
+      top: 1rem;
+      left: 1rem;
+      width: 2rem; height: 2rem;
+      border-radius:50%;
+      display:grid; place-items:center;
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      font-weight: var(--weight-semibold);
+    }
+    .faq-wrap { max-width: 860px; margin: 0 auto; }
+    .final-cta {
+      border-radius: 1.5rem;
+      background: linear-gradient(135deg, rgba(255,255,255,.85), rgba(237,230,218,.95));
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-xl);
+      padding: 2rem;
+      text-align:center;
+    }
+    .footer-socials { display:flex; gap:.75rem; flex-wrap:wrap; }
+    .footer-socials .tag { background: var(--bg-surface-2); }
+    .sticky-nav-spacer { height: var(--navbar-height); }
+    @media (max-width: 1024px) {
+      .hero-grid, .profile-grid, .hub-grid, .features-grid, .preview-grid, .roadmap-grid, .timeline { grid-template-columns: 1fr 1fr; }
+      .hero-visual { min-height: 460px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding-top: 1.75rem; }
+      .hero-grid, .profile-grid, .hub-grid, .features-grid, .preview-grid, .roadmap-grid, .timeline { grid-template-columns: 1fr; }
+      .hero-visual { min-height: auto; }
+      .section-heading { align-items:flex-start; flex-direction:column; }
+      .device-shell { padding: .85rem; }
+      .dashboard-grid { gap: .6rem; }
+      .dash-attendance, .dash-gpa, .dash-pomo,
+      .dash-assignments, .dash-notes, .dash-resume, .dash-exams { grid-column: span 12; }
+      .final-cta { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===================================================== -->
+  <!-- PAGE WRAPPER -->
+  <!-- ===================================================== -->
+  <div class="page-wrapper">
+
+    <!-- ===================================================== -->
+    <!-- HEADER / NAVIGATION -->
+    <!-- ===================================================== -->
+    <header class="navbar" role="banner">
+      <div class="container navbar-inner">
+        <!-- Brand / Logo -->
+        <a class="navbar-brand" href="home.HTML" aria-label="SPARIX home">
+          <span class="navbar-brand-logo">S</span>
+          <span>
+            <span class="navbar-brand-name">SPARIX</span><br>
+            <span class="navbar-brand-tagline">Study. Build. Grow.</span>
+          </span>
+        </a>
+
+        <!-- Primary Navigation -->
+        <nav class="navbar-nav" aria-label="Primary navigation">
+          <a class="nav-link active" href="home.HTML">Home</a>
+          <a class="nav-link" href="student-os.HTML">Student OS</a>
+          <a class="nav-link" href="resources.HTML">Resources</a>
+          <a class="nav-link" href="developer-hub.HTML">Developer Hub</a>
+          <a class="nav-link" href="about.HTML">About</a>
+          <a class="nav-link" href="contact.HTML">Contact</a>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="navbar-actions">
+          <button class="btn btn-outline btn-sm hide-sm" type="button">Sign In</button>
+          <a class="btn btn-primary btn-sm" href="get-started.HTML">Get Started</a>
+          <button class="navbar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a class="nav-link active" href="home.HTML">Home</a>
+      <a class="nav-link" href="student-os.HTML">Student OS</a>
+      <a class="nav-link" href="resources.HTML">Resources</a>
+      <a class="nav-link" href="developer-hub.HTML">Developer Hub</a>
+      <a class="nav-link" href="about.HTML">About</a>
+      <a class="nav-link" href="contact.HTML">Contact</a>
+      <a class="btn btn-primary btn-sm w-full mt-2" href="get-started.HTML">Get Started</a>
+    </nav>
+
+    <!-- ===================================================== -->
+    <!-- MAIN CONTENT -->
+    <!-- ===================================================== -->
+    <main class="main-content" id="home">
+
+      <!-- ===================================================== -->
+      <!-- HERO SECTION -->
+      <!-- ===================================================== -->
+      <section class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy animate-slide-up">
+            <div class="eyebrow">Premium Student Operating System</div>
+            <h1 class="type-hero mb-4">One Platform.<br>Every Tool A Student Needs.</h1>
+            <p class="type-body text-secondary">
+              Manage academics, productivity, resources, career growth, and developer tools through one unified operating system.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="platform-overview.HTML">Explore Platform</a>
+              <a class="btn btn-outline btn-lg" href="get-started.HTML">Get Started</a>
+            </div>
+            <div class="hero-meta">
+              <span class="badge badge-primary">Student-first</span>
+              <span class="badge badge-neutral">Academics</span>
+              <span class="badge badge-neutral">Career</span>
+              <span class="badge badge-neutral">Developer Tools</span>
+            </div>
+          </div>
+
+          <!-- Hero Visual / Dashboard Preview -->
+          <div class="hero-visual animate-scale-in">
+            <div class="device-shell">
+              <div class="device-top">
+                <span>SPARIX Dashboard</span>
+                <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              </div>
+              <div class="dashboard-grid" aria-label="Dashboard preview">
+                <article class="dash-card dash-attendance">
+                  <span class="badge badge-success badge-dot">Attendance</span>
+                  <div class="ring" aria-hidden="true"></div>
+                  <p class="type-small mt-2">78% present this month</p>
+                </article>
+                <article class="dash-card dash-gpa">
+                  <span class="badge badge-primary badge-dot">GPA</span>
+                  <h4 class="type-card-title">8.6</h4>
+                  <p class="type-small">Current semester</p>
+                </article>
+                <article class="dash-card dash-pomo">
+                  <span class="badge badge-warning badge-dot">Focus</span>
+                  <h4 class="type-card-title">Pomodoro</h4>
+                  <p class="type-small">22:14 remaining</p>
+                </article>
+                <article class="dash-card dash-assignments">
+                  <h4 class="type-card-title">Assignments</h4>
+                  <div class="mini-list">
+                    <div class="mini-item"><span>Data Structures</span><strong>Due Today</strong></div>
+                    <div class="mini-item"><span>Web App Prototype</span><strong>Tomorrow</strong></div>
+                  </div>
+                </article>
+                <article class="dash-card dash-notes">
+                  <h4 class="type-card-title">Notes</h4>
+                  <p class="type-small">12 study notes synced</p>
+                </article>
+                <article class="dash-card dash-resume">
+                  <span class="badge badge-info badge-dot">Resume Score</span>
+                  <h4 class="type-card-title">84 / 100</h4>
+                </article>
+                <article class="dash-card dash-exams">
+                  <h4 class="type-card-title">Upcoming Exams</h4>
+                  <div class="mini-list">
+                    <div class="mini-item"><span>Operating Systems</span><strong>5 Days</strong></div>
+                    <div class="mini-item"><span>Database Systems</span><strong>11 Days</strong></div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- WHO ARE YOU SECTION -->
+      <!-- ===================================================== -->
+      <section class="section" id="who-are-you">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">Who Are You?</div>
+              <h2 class="type-section">Choose Your Profile</h2>
+            </div>
+            <p>SPARIX adapts the interface and tools to your role, so every user sees the most relevant workspace from day one.</p>
+          </div>
+
+          <div class="profile-grid">
+            <article class="card profile-card">
+              <div class="card-body">
+                <span class="badge badge-primary">Student</span>
+                <h3 class="card-title">Focused Study Tools</h3>
+                <p class="card-description">Pomodoro, notes, flashcards, study planner, and task management for everyday academic flow.</p>
+                <ul>
+                  <li>Study sessions</li>
+                  <li>Task tracking</li>
+                  <li>Revision utilities</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card profile-card">
+              <div class="card-body">
+                <span class="badge badge-secondary">Engineering Student</span>
+                <h3 class="card-title">Technical Academic Toolkit</h3>
+                <p class="card-description">Built for labs, projects, and semester planning with exam tracking and GPA tools.</p>
+                <ul>
+                  <li>Timetables</li>
+                  <li>CGPA tools</li>
+                  <li>Project planning</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card profile-card">
+              <div class="card-body">
+                <span class="badge badge-neutral">Developer</span>
+                <h3 class="card-title">Utility Workspace</h3>
+                <p class="card-description">Fast utilities like JSON formatting, regex testing, QR generation, and unit conversion.</p>
+                <ul>
+                  <li>Developer tools</li>
+                  <li>Data utilities</li>
+                  <li>Quick generators</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card profile-card">
+              <div class="card-body">
+                <span class="badge badge-info">Intern</span>
+                <h3 class="card-title">Career Preparation</h3>
+                <p class="card-description">Organize applications, sharpen your resume, and keep internship progress in one place.</p>
+                <ul>
+                  <li>Internship tracking</li>
+                  <li>Resume builder</li>
+                  <li>Portfolio flow</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card profile-card">
+              <div class="card-body">
+                <span class="badge badge-success">Job Seeker</span>
+                <h3 class="card-title">Job Search Support</h3>
+                <p class="card-description">ATS insights, profile optimization, and application tracking for career growth.</p>
+                <ul>
+                  <li>ATS checker</li>
+                  <li>Applications</li>
+                  <li>Resume scoring</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- PLATFORM OVERVIEW SECTION -->
+      <!-- ===================================================== -->
+      <section class="section bg-surface-2" id="platform-overview">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">Platform Overview</div>
+              <h2 class="type-section">Four Unified Hubs</h2>
+            </div>
+            <p>A refined ecosystem that keeps every academic, career, and developer workflow under one elegant dashboard.</p>
+          </div>
+
+          <div class="hub-grid">
+            <article class="card hub-card">
+              <div class="card-body">
+                <span class="badge badge-primary">Student OS</span>
+                <h3 class="card-title">Productivity for study flow</h3>
+                <ul>
+                  <li>Pomodoro</li>
+                  <li>Notes</li>
+                  <li>Flashcards</li>
+                  <li>Study Planner</li>
+                  <li>Task Manager</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card hub-card">
+              <div class="card-body">
+                <span class="badge badge-secondary">College Hub</span>
+                <h3 class="card-title">Academic planning and tracking</h3>
+                <ul>
+                  <li>Attendance Calculator</li>
+                  <li>GPA Calculator</li>
+                  <li>CGPA Calculator</li>
+                  <li>Timetable Generator</li>
+                  <li>Exam Countdown</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card hub-card">
+              <div class="card-body">
+                <span class="badge badge-success">Career Hub</span>
+                <h3 class="card-title">Build a strong career profile</h3>
+                <ul>
+                  <li>Resume Builder</li>
+                  <li>ATS Checker</li>
+                  <li>Portfolio Generator</li>
+                  <li>Internship Tracker</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card hub-card">
+              <div class="card-body">
+                <span class="badge badge-info">Developer Hub</span>
+                <h3 class="card-title">Practical utility tools</h3>
+                <ul>
+                  <li>JSON Formatter</li>
+                  <li>QR Generator</li>
+                  <li>Regex Tester</li>
+                  <li>Unit Converter</li>
+                  <li>Color Palette Generator</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- HOW IT WORKS SECTION -->
+      <!-- ===================================================== -->
+      <section class="section" id="how-it-works">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">How SPARIX Works</div>
+              <h2 class="type-section">Designed Around Your Profile</h2>
+            </div>
+          </div>
+          <div class="timeline">
+            <article class="card timeline-card">
+              <div class="card-body">
+                <h3 class="card-title">Choose Your Profile</h3>
+                <p class="card-description">Select the student, engineering, developer, intern, or job seeker experience.</p>
+              </div>
+            </article>
+            <article class="card timeline-card">
+              <div class="card-body">
+                <h3 class="card-title">Access Personalized Tools</h3>
+                <p class="card-description">Get the right set of academic, productivity, resource, and career utilities.</p>
+              </div>
+            </article>
+            <article class="card timeline-card">
+              <div class="card-body">
+                <h3 class="card-title">Track Progress</h3>
+                <p class="card-description">Stay on top of attendance, exams, assignments, resumes, and projects.</p>
+              </div>
+            </article>
+            <article class="card timeline-card">
+              <div class="card-body">
+                <h3 class="card-title">Grow Academically And Professionally</h3>
+                <p class="card-description">Build consistency, confidence, and momentum across your student life.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- WHY SPARIX SECTION -->
+      <!-- ===================================================== -->
+      <section class="section bg-surface-2" id="why-sparix">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">Why SPARIX</div>
+              <h2 class="type-section">Why Students Choose It</h2>
+            </div>
+          </div>
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Everything In One Place</h3>
+              <p class="feature-card-desc">One elegant system for study, planning, resources, and career tools.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Student First Design</h3>
+              <p class="feature-card-desc">Built around daily academic needs, clarity, and fast access on mobile.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Career Focused</h3>
+              <p class="feature-card-desc">Bridge the gap between college tasks and real career preparation.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Productivity Driven</h3>
+              <p class="feature-card-desc">From Pomodoro to planners, keep momentum and focus every day.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Modern Interface</h3>
+              <p class="feature-card-desc">Refined, minimal, premium, and inspired by the best SaaS experiences.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-card-icon">◌</div>
+              <h3 class="feature-card-title">Future Ready</h3>
+              <p class="feature-card-desc">A scalable foundation for AI, analytics, and personalized recommendations.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- RESOURCES / PREVIEW SECTION -->
+      <!-- ===================================================== -->
+      <section class="section" id="resources">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">Screenshots / Preview</div>
+              <h2 class="type-section">Product Preview Cards</h2>
+            </div>
+          </div>
+          <div class="preview-grid">
+            <article class="card preview-card">
+              <div class="card-body">
+                <span class="badge badge-primary">Student Dashboard</span>
+                <h3 class="card-title">Daily study workspace</h3>
+                <ul>
+                  <li>Focus timer</li>
+                  <li>Assignments</li>
+                  <li>Progress snapshots</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card preview-card">
+              <div class="card-body">
+                <span class="badge badge-secondary">College Dashboard</span>
+                <h3 class="card-title">Academic control panel</h3>
+                <ul>
+                  <li>GPA tracking</li>
+                  <li>Attendance insights</li>
+                  <li>Exam countdowns</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card preview-card">
+              <div class="card-body">
+                <span class="badge badge-success">Career Dashboard</span>
+                <h3 class="card-title">Application readiness</h3>
+                <ul>
+                  <li>Resume score</li>
+                  <li>ATS checks</li>
+                  <li>Internship list</li>
+                </ul>
+              </div>
+            </article>
+            <article class="card preview-card" id="developer-hub">
+              <div class="card-body">
+                <span class="badge badge-info">Developer Dashboard</span>
+                <h3 class="card-title">Utility cockpit</h3>
+                <ul>
+                  <li>JSON formatter</li>
+                  <li>Regex tester</li>
+                  <li>Converter tools</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- ROADMAP SECTION -->
+      <!-- ===================================================== -->
+      <section class="section bg-surface-2" id="roadmap">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">Future Roadmap</div>
+              <h2 class="type-section">Coming Soon</h2>
+            </div>
+          </div>
+          <div class="roadmap-grid">
+            <article class="card roadmap-card"><div class="card-body"><span class="badge badge-neutral">Coming Soon</span><h3 class="card-title">AI Study Planner</h3><p class="card-description">Intelligent scheduling for better focus and revision.</p></div></article>
+            <article class="card roadmap-card"><div class="card-body"><span class="badge badge-neutral">Coming Soon</span><h3 class="card-title">Smart Timetable</h3><p class="card-description">Adaptive timetable suggestions based on deadlines.</p></div></article>
+            <article class="card roadmap-card"><div class="card-body"><span class="badge badge-neutral">Coming Soon</span><h3 class="card-title">Resume Intelligence</h3><p class="card-description">More relevant resume recommendations and insights.</p></div></article>
+            <article class="card roadmap-card"><div class="card-body"><span class="badge badge-neutral">Coming Soon</span><h3 class="card-title">Analytics Dashboard</h3><p class="card-description">Visual progress tracking for academic and career goals.</p></div></article>
+            <article class="card roadmap-card"><div class="card-body"><span class="badge badge-neutral">Coming Soon</span><h3 class="card-title">Personalized Recommendations</h3><p class="card-description">Custom next steps based on your activity and goals.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- FAQ SECTION -->
+      <!-- ===================================================== -->
+      <section class="section" id="faq">
+        <div class="container faq-wrap">
+          <div class="section-heading">
+            <div>
+              <div class="section-kicker">FAQ</div>
+              <h2 class="type-section">Frequently Asked Questions</h2>
+            </div>
+          </div>
+
+          <div class="accordion" data-multi>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Is SPARIX free?
+                <span class="accordion-icon">⌄</span>
+              </button>
+              <div class="accordion-body">
+                <div class="accordion-body-inner">SPARIX is designed to offer a free core experience with premium-ready foundations for future expansion.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Do I need an account?
+                <span class="accordion-icon">⌄</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-body-inner">You can explore the platform experience immediately, while accounts will support saved preferences and progress.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Can I use only one tool?
+                <span class="accordion-icon">⌄</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-body-inner">Yes. SPARIX is modular, so you can use just one hub or the full ecosystem.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Is my data stored?
+                <span class="accordion-icon">⌄</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-body-inner">Data storage will be handled securely, with user controls for saved preferences and workspace history.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-trigger" aria-expanded="false">
+                Will mobile support be available?
+                <span class="accordion-icon">⌄</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-body-inner">Yes. Mobile experience is a priority, and the interface is built to feel like a premium mobile application.</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- CTA SECTION -->
+      <!-- ===================================================== -->
+      <section class="section" id="get-started">
+        <div class="container">
+          <div class="final-cta">
+            <h2 class="type-section mb-3">Start Building Your Future With SPARIX</h2>
+            <p class="type-body text-secondary">Study smarter. Stay organized. Grow faster.</p>
+            <div class="hero-actions justify-center">
+              <a class="btn btn-primary btn-lg" href="get-started.HTML">Get Started</a>
+              <a class="btn btn-outline btn-lg" href="platform-overview.HTML">Explore Features</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- FOOTER -->
+      <!-- ===================================================== -->
+      <footer class="footer" id="contact">
+        <div class="container">
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <a class="navbar-brand" href="home.HTML">
+                <span class="navbar-brand-logo">S</span>
+                <span>
+                  <span class="navbar-brand-name">SPARIX</span><br>
+                  <span class="navbar-brand-tagline">Study. Build. Grow.</span>
+                </span>
+              </a>
+              <p>Premium Student Operating System for academics, productivity, career growth, and developer utilities.</p>
+            </div>
+
+            <!-- Footer Quick Links -->
+            <div>
+              <div class="footer-col-title">Quick Links</div>
+              <div class="footer-links">
+                <a class="footer-link" href="home.HTML">Home</a>
+                <a class="footer-link" href="student-os.HTML">Student OS</a>
+                <a class="footer-link" href="resources.HTML">Resources</a>
+                <a class="footer-link" href="developer-hub.HTML">Developer Hub</a>
+                <a class="footer-link" href="about.HTML">About</a>
+                <a class="footer-link" href="contact.HTML">Contact</a>
+              </div>
+            </div>
+
+            <!-- Footer Resources -->
+            <div>
+              <div class="footer-col-title">Resources</div>
+              <div class="footer-links">
+                <a class="footer-link" href="faq.HTML">Documentation</a>
+                <a class="footer-link" href="faq.HTML">Support</a>
+                <a class="footer-link" href="faq.HTML">FAQ</a>
+              </div>
+            </div>
+
+            <!-- Footer Social Links -->
+            <div>
+              <div class="footer-col-title">Social Links</div>
+              <div class="footer-socials">
+                <a class="tag" href="#" aria-label="GitHub">GitHub</a>
+                <a class="tag" href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a class="tag" href="#" aria-label="Instagram">Instagram</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>SPARIX © 2026</p>
+            <p>Built for students who want to study, build, and grow.</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- ===================================================== -->
+  <!-- SCRIPTS -->
+  <!-- ===================================================== -->
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.querySelector('.navbar-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+      const mobileLinks = mobileNav?.querySelectorAll('.nav-link, .btn');
+      const setToggleState = (open) => {
+        toggle?.setAttribute('aria-expanded', String(open));
+      };
+
+      if (toggle && mobileNav) {
+        toggle.addEventListener('click', () => {
+          const open = mobileNav.classList.contains('open');
+          setToggleState(!open);
+        });
+        mobileLinks?.forEach(link => link.addEventListener('click', () => setToggleState(false)));
+      }
+
+      const faq = document.querySelector('.accordion');
+      if (faq) {
+        faq.querySelectorAll('.accordion-trigger').forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            const isOpen = trigger.classList.contains('open');
+            trigger.setAttribute('aria-expanded', String(!isOpen));
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

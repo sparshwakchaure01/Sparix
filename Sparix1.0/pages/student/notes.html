@@ -1,0 +1,224 @@
+ash
+
+cat > /mnt/user-data/outputs/student/productivity/notes.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes — SPARIX</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <style>
+    /* Notes grid */
+    #notes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-5); }
+
+    /* Note cards rendered by JS use .card — add pinned accent */
+    .note-pinned { border-top: 3px solid var(--warm-biscotti) !important; }
+    .note-title   { font-size: var(--text-md); font-weight: var(--weight-semibold); color: var(--text-primary); margin-bottom: var(--space-2); }
+    .note-preview { font-size: var(--text-sm); color: var(--text-muted); line-height: var(--leading-relaxed); display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+    .note-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+
+    /* Category filter pills */
+    .cat-filter-row { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .cat-filter-btn { padding: 5px 14px; border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: var(--weight-semibold); border: 1px solid var(--border-mid); background: var(--bg-surface-3); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); }
+    .cat-filter-btn:hover { background: var(--state-hover); color: var(--text-primary); }
+    .cat-filter-btn.active { background: var(--color-primary); color: var(--text-inverse); border-color: var(--color-primary); }
+
+    .toolbar { display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center; }
+    .toolbar .input-wrapper { flex: 1; min-width: 200px; }
+  </style>
+  <script src="../../main.js" defer></script>
+  <script src="../../js/notes.js" defer></script>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="navbar-brand" href="../../index.html" aria-label="SPARIX Home">
+        <div class="navbar-brand-logo">S</div>
+        <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+      </a>
+      <nav class="navbar-nav" aria-label="Primary">
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../student-os.html">Student OS</a>
+        <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+        <a class="nav-link" href="tasks.html">Tasks</a>
+        <a class="nav-link" href="planner.html">Planner</a>
+        <a class="nav-link active" href="notes.html">Notes</a>
+        <a class="nav-link" href="flashcards.html">Flashcards</a>
+        <a class="nav-link" href="assignments.html">Assignments</a>
+      </nav>
+      <div class="navbar-actions">
+        <a class="btn btn-primary btn-sm hide-sm" href="../../student-os.html">Dashboard</a>
+        <button class="navbar-toggle" type="button" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../student-os.html">Student OS</a>
+    <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+    <a class="nav-link" href="tasks.html">Tasks</a>
+    <a class="nav-link" href="planner.html">Planner</a>
+    <a class="nav-link active" href="notes.html">Notes</a>
+    <a class="nav-link" href="flashcards.html">Flashcards</a>
+    <a class="nav-link" href="assignments.html">Assignments</a>
+  </nav>
+
+  <main class="main-content">
+    <div class="dashboard-wrapper container">
+
+      <nav class="breadcrumbs mb-6">
+        <span class="breadcrumb-item"><a href="../../student-os.html">Student OS</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item"><a href="../../student-os.html#productivity">Productivity</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Notes</span>
+      </nav>
+
+      <div class="dashboard-section">
+        <div class="feature-card">
+          <div class="dashboard-greeting">Productivity · Knowledge</div>
+          <h1 class="dashboard-title">Notes</h1>
+          <p class="dashboard-subtitle">Capture ideas, subject notes, revisions, and personal thoughts — all in one organized space.</p>
+        </div>
+      </div>
+
+      <!-- Editor -->
+      <div class="dashboard-section" id="note-editor-section">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">Create / Edit Note</h2>
+        </div>
+        <div class="card card-body">
+          <form id="notes-form" onsubmit="return false;">
+            <div class="form-group">
+              <label class="form-label">Title <span class="required">*</span></label>
+              <input id="n-title" type="text" class="input" placeholder="Note title…" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="n-category" class="select">
+                <option value="general">General</option>
+                <option value="subject-notes">Subject Notes</option>
+                <option value="revision-notes">Revision Notes</option>
+                <option value="personal">Personal</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Content <span class="required">*</span></label>
+              <textarea id="n-content" class="textarea" rows="6" placeholder="Write your note here…"></textarea>
+            </div>
+            <div class="flex gap-3 mt-2">
+              <button id="n-submit-btn" class="btn btn-primary">Save Note</button>
+              <button id="n-cancel-btn" type="button" class="btn btn-ghost">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Filters + Notes Grid -->
+      <div class="dashboard-section">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">All Notes</h2>
+        </div>
+
+        <!-- Search + Sort toolbar -->
+        <div class="toolbar mb-4">
+          <div class="input-wrapper flex-1">
+            <input id="n-search" type="text" class="input" placeholder="Search notes…" />
+          </div>
+          <select id="n-sort" class="select" style="min-width:160px; width:auto;">
+            <option value="pinned">Pinned First</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="title">Alphabetical</option>
+          </select>
+        </div>
+
+        <!-- Category pills -->
+        <div class="cat-filter-row mb-6">
+          <button class="cat-filter-btn active" data-cat="all">All</button>
+          <button class="cat-filter-btn" data-cat="general">General</button>
+          <button class="cat-filter-btn" data-cat="subject-notes">Subject Notes</button>
+          <button class="cat-filter-btn" data-cat="revision-notes">Revision Notes</button>
+          <button class="cat-filter-btn" data-cat="personal">Personal</button>
+        </div>
+
+        <!-- Notes output -->
+        <div id="notes-grid">
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <h3 class="empty-state-title">No notes yet</h3>
+            <p class="empty-state-desc">Create your first note using the editor above.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="navbar-brand">
+            <div class="navbar-brand-logo">S</div>
+            <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+          </div>
+          <p>Premium student operating system designed for elegant, focused, and real academic workflows.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Productivity</div>
+          <div class="footer-links">
+            <a class="footer-link" href="pomodoro.html">Pomodoro</a>
+            <a class="footer-link" href="tasks.html">Tasks</a>
+            <a class="footer-link" href="planner.html">Planner</a>
+            <a class="footer-link" href="notes.html">Notes</a>
+            <a class="footer-link" href="flashcards.html">Flashcards</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Student OS</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../student-os.html">Dashboard</a>
+            <a class="footer-link" href="../../student-os.html#productivity">Productivity</a>
+            <a class="footer-link" href="../../student-os.html#college-tools">College Tools</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">About</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../about.html">About</a>
+            <a class="footer-link" href="../../contact.html">Contact</a>
+            <a class="footer-link" href="../../privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 SPARIX</p><p>All rights reserved.</p></div>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    const toggle = document.querySelector('.navbar-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    toggle?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.classList.contains('open')) return;
+      if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+        mobileNav.classList.remove('open'); toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>

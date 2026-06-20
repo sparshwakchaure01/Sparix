@@ -1,0 +1,229 @@
+cat > /mnt/user-data/outputs/student/productivity/planner.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Planner — SPARIX</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <style>
+    /* Layout */
+    .planner-layout { display: grid; grid-template-columns: 300px 1fr; gap: var(--space-6); align-items: start; }
+    @media (max-width: 900px) { .planner-layout { grid-template-columns: 1fr; } }
+
+    /* View tabs */
+    .view-tab { padding: var(--space-2) var(--space-4); border-radius: var(--radius-full); font-size: var(--text-xs); font-weight: var(--weight-semibold); border: 1px solid var(--border-mid); background: var(--bg-surface-3); color: var(--text-secondary); cursor: pointer; transition: all var(--transition-fast); white-space: nowrap; }
+    .view-tab:hover { background: var(--state-hover); color: var(--text-primary); }
+    .view-tab.active { background: var(--color-primary); color: var(--text-inverse); border-color: var(--color-primary); }
+
+    /* Planner content blocks */
+    .planner-block { background: var(--bg-surface-2); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-3) var(--space-4); margin-bottom: var(--space-2); transition: box-shadow var(--transition-fast); }
+    .planner-block:hover { box-shadow: var(--shadow-sm); border-color: var(--border-mid); }
+
+    /* Weekly grid */
+    .weekly-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-2); }
+    .weekly-day { background: var(--bg-surface-2); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: var(--space-3); min-height: 100px; }
+    .weekly-day-header { font-size: var(--text-xs); font-weight: var(--weight-semibold); text-transform: uppercase; letter-spacing: var(--tracking-wide); color: var(--text-muted); margin-bottom: var(--space-2); }
+    @media (max-width: 768px) { .weekly-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* Monthly grid */
+    .monthly-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--space-2); }
+    .monthly-cell { background: var(--bg-surface-2); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: var(--space-2); min-height: 56px; display: flex; flex-direction: column; gap: 3px; }
+    .monthly-cell.today { border-color: var(--color-primary); background: var(--color-primary-subtle); }
+    .monthly-day-num { font-size: var(--text-xs); font-weight: var(--weight-semibold); color: var(--text-secondary); }
+    @media (max-width: 640px) { .monthly-grid { grid-template-columns: repeat(4, 1fr); } }
+  </style>
+  <script src="../../main.js" defer></script>
+  <script src="../../js/planner.js" defer></script>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="navbar-brand" href="../../index.html" aria-label="SPARIX Home">
+        <div class="navbar-brand-logo">S</div>
+        <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+      </a>
+      <nav class="navbar-nav" aria-label="Primary">
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../student-os.html">Student OS</a>
+        <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+        <a class="nav-link" href="tasks.html">Tasks</a>
+        <a class="nav-link active" href="planner.html">Planner</a>
+        <a class="nav-link" href="notes.html">Notes</a>
+        <a class="nav-link" href="flashcards.html">Flashcards</a>
+        <a class="nav-link" href="assignments.html">Assignments</a>
+      </nav>
+      <div class="navbar-actions">
+        <a class="btn btn-primary btn-sm hide-sm" href="../../student-os.html">Dashboard</a>
+        <button class="navbar-toggle" type="button" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../student-os.html">Student OS</a>
+    <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+    <a class="nav-link" href="tasks.html">Tasks</a>
+    <a class="nav-link active" href="planner.html">Planner</a>
+    <a class="nav-link" href="notes.html">Notes</a>
+    <a class="nav-link" href="flashcards.html">Flashcards</a>
+    <a class="nav-link" href="assignments.html">Assignments</a>
+  </nav>
+
+  <main class="main-content">
+    <div class="dashboard-wrapper container">
+
+      <nav class="breadcrumbs mb-6">
+        <span class="breadcrumb-item"><a href="../../student-os.html">Student OS</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item"><a href="../../student-os.html#productivity">Productivity</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Study Planner</span>
+      </nav>
+
+      <div class="dashboard-section">
+        <div class="feature-card">
+          <div class="dashboard-greeting">Productivity · Planning</div>
+          <h1 class="dashboard-title">Study Planner</h1>
+          <p class="dashboard-subtitle">Plan daily, weekly, and monthly study sessions. Structure your time and study smarter.</p>
+        </div>
+      </div>
+
+      <!-- Main Layout -->
+      <div class="dashboard-section">
+        <div class="planner-layout">
+
+          <!-- Sidebar: Form + Upcoming -->
+          <div>
+            <div class="card card-body mb-5">
+              <h3 class="card-title mb-4">Add Study Block</h3>
+              <form id="planner-form" onsubmit="return false;">
+                <div class="form-group">
+                  <label class="form-label">Subject <span class="required">*</span></label>
+                  <input id="p-subject" type="text" class="input" placeholder="e.g. Mathematics" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Topic</label>
+                  <input id="p-topic" type="text" class="input" placeholder="e.g. Differential Equations" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date <span class="required">*</span></label>
+                  <input id="p-date" type="date" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Time <span class="required">*</span></label>
+                  <input id="p-time" type="time" class="input" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Duration (minutes)</label>
+                  <input id="p-duration" type="number" class="input" placeholder="60" min="5" max="480" />
+                </div>
+                <div class="flex gap-2 mt-2">
+                  <button id="p-submit-btn" class="btn btn-primary btn-sm">Add Block</button>
+                  <button id="p-cancel-btn" type="button" class="btn btn-ghost btn-sm">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="card card-body">
+              <h3 class="card-title mb-4">Upcoming Sessions</h3>
+              <div id="upcoming-list">
+                <p class="type-small">No upcoming sessions.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Calendar -->
+          <div>
+            <!-- View Controls -->
+            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <div class="flex gap-2">
+                <button class="view-tab active" data-view="daily">Daily</button>
+                <button class="view-tab" data-view="weekly">Weekly</button>
+                <button class="view-tab" data-view="monthly">Monthly</button>
+              </div>
+              <div class="flex gap-2">
+                <button id="nav-prev" class="btn btn-ghost btn-sm">‹ Prev</button>
+                <button id="nav-today" class="btn btn-outline btn-sm">Today</button>
+                <button id="nav-next" class="btn btn-ghost btn-sm">Next ›</button>
+              </div>
+            </div>
+            <div class="card card-body" style="min-height: 420px;">
+              <div id="planner-content"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="navbar-brand">
+            <div class="navbar-brand-logo">S</div>
+            <div><div class="navbar-brand-name">SPARIX</div><div class="navbar-brand-tagline">Study. Build. Grow.</div></div>
+          </div>
+          <p>Premium student operating system designed for elegant, focused, and real academic workflows.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Productivity</div>
+          <div class="footer-links">
+            <a class="footer-link" href="pomodoro.html">Pomodoro</a>
+            <a class="footer-link" href="tasks.html">Tasks</a>
+            <a class="footer-link" href="planner.html">Planner</a>
+            <a class="footer-link" href="notes.html">Notes</a>
+            <a class="footer-link" href="flashcards.html">Flashcards</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Student OS</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../student-os.html">Dashboard</a>
+            <a class="footer-link" href="../../student-os.html#productivity">Productivity</a>
+            <a class="footer-link" href="../../student-os.html#college-tools">College Tools</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">About</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../about.html">About</a>
+            <a class="footer-link" href="../../contact.html">Contact</a>
+            <a class="footer-link" href="../../privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 SPARIX</p><p>All rights reserved.</p></div>
+    </div>
+  </footer>
+</div>
+<script>
+  (function () {
+    const toggle = document.querySelector('.navbar-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    toggle?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.classList.contains('open')) return;
+      if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+        mobileNav.classList.remove('open'); toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+</body>
+</html>
+HTMLEOF
+echo "planner.html done"

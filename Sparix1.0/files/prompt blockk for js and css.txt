@@ -1,0 +1,163 @@
+# SPARIX PROJECT CONTEXT
+
+You are working on an existing project called SPARIX.
+
+SPARIX is a premium Student Operating System, College Hub, Career Hub, Resource Hub, and Developer Utility Platform.
+
+The project already contains:
+
+* main.css
+* main.js
+
+These files are already created and should be considered the foundation of the entire project.
+
+---
+
+# IMPORTANT RULES
+
+DO NOT recreate:
+
+* Navbar
+* Footer
+* Sidebar
+* Mobile Navigation
+* Buttons
+* Cards
+* Forms
+* Modals
+* Toast Notifications
+* Theme System
+* Dashboard Layout
+* Common Utilities
+* Local Storage Helpers
+* Search Components
+* Dropdown Components
+* Tabs Components
+
+Assume these already exist inside main.css and main.js.
+
+Reuse existing components whenever possible.
+
+Only create code that is specific to the requested page or feature.
+
+---
+
+# BRAND
+
+Name: SPARIX
+
+Tagline:
+
+Study. Build. Grow.
+
+---
+
+# DESIGN SYSTEM
+
+Style:
+
+* Premium
+* Elegant
+* Modern SaaS
+* Professional
+* Academic
+* Luxury
+* Minimal
+* Clean
+* Trustworthy
+* High Readability
+
+Reference Style:
+
+* Notion
+* Linear
+* Framer
+* Stripe
+* Vercel
+
+Avoid:
+
+* Neon colors
+* Gaming aesthetics
+* Childish designs
+* Excessive gradients
+* Cluttered layouts
+
+---
+
+# COLOR PALETTE
+
+Ivory Lace
+#EDE6DA
+
+Warm Biscotti
+#C7A37E
+
+Antique Wood
+#9E7655
+
+Soft Linen
+#B59F8C
+
+Deep Espresso
+#644736
+
+Use these colors consistently.
+
+Do not introduce random new brand colors.
+
+---
+
+# TYPOGRAPHY
+
+Headings:
+
+DM Serif Display
+
+Body/UI:
+
+Plus Jakarta Sans
+
+Typography should feel elegant, premium, readable, and professional.
+
+---
+
+# DEVELOPMENT RULES
+
+Use existing styles from main.css whenever possible.
+
+Use existing functions from main.js whenever possible.
+
+Do not create duplicate components.
+
+Create only:
+
+* Page-specific HTML
+* Page-specific CSS (only if absolutely necessary)
+* Page-specific JavaScript (only if absolutely necessary)
+
+Keep code modular and clean.
+
+Mobile responsive is mandatory.
+
+Dark mode compatibility is mandatory.
+
+Accessibility should be considered.
+
+---
+
+# OUTPUT FORMAT
+
+Provide:
+
+1. Complete HTML
+2. Page-specific CSS (if needed)
+3. Page-specific JavaScript (if needed)
+
+Explain where page-specific code should be placed.
+
+Keep code production-ready.
+
+Assume this page will become part of a project containing 50+ pages and many interconnected tools.
+
+Maintain consistency with the SPARIX design system at all times.

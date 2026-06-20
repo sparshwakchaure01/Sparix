@@ -1,0 +1,831 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About SPARIX — a premium Student Operating System for productivity, college, career, resources, and developer utilities." />
+  <title>About SPARIX</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="main.css" />
+
+  <style>
+    /* Page-specific CSS only */
+    .about-hero {
+      padding: var(--space-20) 0 var(--space-16);
+      background:
+        radial-gradient(circle at top right, rgba(199,163,126,0.14), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(158,118,85,0.10), transparent 35%);
+    }
+
+    .about-hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-10);
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-copy .type-hero {
+      max-width: 12ch;
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-6);
+    }
+
+    .hero-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-card);
+      padding: var(--space-6);
+    }
+
+    .hero-panel-top {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-xl);
+      background: var(--color-primary);
+      color: var(--text-inverse);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      flex-shrink: 0;
+    }
+
+    .hero-panel-list {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-5);
+    }
+
+    .panel-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+      background: var(--bg-surface-2);
+      border: 1px solid var(--border-light);
+    }
+
+    .panel-item strong { display: block; margin-bottom: 2px; }
+
+    .section-shell {
+      padding: var(--space-16) 0;
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: var(--space-8);
+    }
+
+    .section-kicker {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+    }
+
+    .mission-grid,
+    .vision-grid,
+    .benefit-grid,
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .mission-grid .card,
+    .vision-card,
+    .benefit-card,
+    .roadmap-card {
+      height: 100%;
+    }
+
+    .icon-chip {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-xl);
+      background: var(--color-primary-subtle);
+      color: var(--color-primary);
+      display: grid;
+      place-items: center;
+      font-size: var(--text-xl);
+      margin-bottom: var(--space-4);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .feature-card .feature-meta {
+      margin-top: var(--space-4);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .founder-image {
+      min-height: 420px;
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--border-light);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.08)),
+        linear-gradient(135deg, var(--bg-surface-2), var(--bg-surface-3));
+      box-shadow: var(--shadow-card);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .founder-image::after {
+      content: "Founder image placeholder";
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      right: 18px;
+      padding: 10px 14px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.72);
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      text-align: center;
+      backdrop-filter: blur(8px);
+    }
+
+    [data-theme="dark"] .founder-image::after {
+      background: rgba(37,32,22,0.76);
+    }
+
+    .founder-mark {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: var(--color-primary-subtle);
+      border: 1px solid var(--border-light);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--color-primary);
+    }
+
+    .timeline {
+      display: grid;
+      gap: var(--space-4);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-5);
+      align-items: start;
+      padding: var(--space-5);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-light);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-card);
+    }
+
+    .timeline-phase {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-primary);
+    }
+
+    .timeline-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-2);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-5);
+    }
+
+    .cta-panel {
+      padding: var(--space-12);
+      border-radius: var(--radius-2xl);
+      background:
+        linear-gradient(135deg, rgba(158,118,85,0.12), rgba(199,163,126,0.08)),
+        var(--bg-surface);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-card);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-4);
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      display: grid;
+      place-items: center;
+      color: var(--text-secondary);
+      background: var(--bg-surface-2);
+    }
+
+    .social-link:hover { color: var(--color-primary); }
+
+    .mobile-nav .nav-link {
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 1024px) {
+      .about-hero-grid,
+      .founder-grid,
+      .mission-grid,
+      .vision-grid,
+      .benefit-grid,
+      .feature-grid,
+      .roadmap-grid,
+      .stats-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-hero,
+      .section-shell {
+        padding: var(--space-12) 0;
+      }
+
+      .about-hero-grid,
+      .founder-grid,
+      .mission-grid,
+      .vision-grid,
+      .benefit-grid,
+      .feature-grid,
+      .roadmap-grid,
+      .stats-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-panel {
+        padding: var(--space-8);
+      }
+
+      .founder-image {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <header class="navbar" role="banner">
+      <div class="container navbar-inner">
+        <a class="navbar-brand" href="index.html" aria-label="SPARIX Home">
+          <div class="navbar-brand-logo" aria-hidden="true">S</div>
+          <div>
+            <div class="navbar-brand-name">SPARIX</div>
+            <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+          </div>
+        </a>
+
+        <nav class="navbar-nav" aria-label="Primary">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="student-os.html">Student OS</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="developer.html">Developer Hub</a>
+          <a class="nav-link active" href="about.html" aria-current="page">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <button class="btn btn-outline btn-sm" data-theme-toggle aria-label="Toggle theme">Theme</button>
+          <button class="navbar-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mobile-nav" aria-label="Mobile primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="student-os.html">Student OS</a>
+      <a class="nav-link" href="resources.html">Resources</a>
+      <a class="nav-link" href="developer.html">Developer Hub</a>
+      <a class="nav-link active" href="about.html" aria-current="page">About</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+
+    <main class="main-content">
+      <section class="about-hero">
+        <div class="container about-hero-grid">
+          <div class="hero-copy animate-slide-up">
+            <div class="eyebrow">Premium Student Operating System</div>
+            <h1 class="type-hero">Built for students who want one place to study, build, and grow.</h1>
+            <p class="type-body">
+              SPARIX is a modern, centralized ecosystem for productivity, college life, careers, resources,
+              and developer utilities. It helps learners stay organized, move faster, and make better decisions
+              across every stage of student life.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="student-os.html">Explore Student OS</a>
+              <a class="btn btn-outline btn-lg" href="contact.html">Talk to Us</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel animate-slide-up delay-2" aria-label="SPARIX overview">
+            <div class="hero-panel-top">
+              <div class="hero-logo" aria-hidden="true">S</div>
+              <div>
+                <h2 class="type-page">SPARIX</h2>
+                <p class="type-body-sm mb-0">Study. Build. Grow.</p>
+              </div>
+            </div>
+            <p class="type-body-sm">
+              Designed with a premium, academic, and professional feel — inspired by the clarity of Notion,
+              Linear, Framer, Stripe, and Vercel.
+            </p>
+            <div class="hero-panel-list">
+              <div class="panel-item">
+                <span class="icon-chip" aria-hidden="true">✦</span>
+                <div><strong>One ecosystem</strong><span class="type-body-sm">Replace scattered tools with a single trusted hub.</span></div>
+              </div>
+              <div class="panel-item">
+                <span class="icon-chip" aria-hidden="true">⌁</span>
+                <div><strong>Student-first</strong><span class="type-body-sm">Every workflow is designed around real academic needs.</span></div>
+              </div>
+              <div class="panel-item">
+                <span class="icon-chip" aria-hidden="true">⌘</span>
+                <div><strong>Career-ready</strong><span class="type-body-sm">From internships to jobs, SPARIX supports your next step.</span></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Our Mission</div>
+            <h2 class="type-section">A simpler, more focused way to manage student life.</h2>
+            <p>
+              We are building SPARIX to reduce friction, improve productivity, support academic growth,
+              strengthen career development, and create a centralized ecosystem that students can rely on daily.
+            </p>
+          </div>
+
+          <div class="mission-grid">
+            <article class="card card-hover">
+              <div class="card-body">
+                <div class="icon-chip" aria-hidden="true">1</div>
+                <h3 class="card-title">Simplify student life</h3>
+                <p class="card-description">Bring schedules, tools, notes, and workflows into one clean system.</p>
+              </div>
+            </article>
+            <article class="card card-hover">
+              <div class="card-body">
+                <div class="icon-chip" aria-hidden="true">2</div>
+                <h3 class="card-title">Improve productivity</h3>
+                <p class="card-description">Reduce context switching and help students focus on what matters most.</p>
+              </div>
+            </article>
+            <article class="card card-hover">
+              <div class="card-body">
+                <div class="icon-chip" aria-hidden="true">3</div>
+                <h3 class="card-title">Support growth</h3>
+                <p class="card-description">Create a long-term platform that grows with students through every phase.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">What Makes SPARIX Different</div>
+            <h2 class="type-section">Five focused pillars, one cohesive experience.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="feature-card-icon" aria-hidden="true">⚡</div>
+              <h3 class="feature-card-title">Student Productivity</h3>
+              <p class="feature-card-desc">Organize tasks, notes, reminders, and daily work in a premium workspace.</p>
+              <div class="feature-meta">
+                <span class="badge badge-primary">Focus</span>
+                <span class="badge badge-neutral">Planning</span>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card-icon" aria-hidden="true">🎓</div>
+              <h3 class="feature-card-title">College Tools</h3>
+              <p class="feature-card-desc">Support campus life with tools that help students stay on top of academics.</p>
+              <div class="feature-meta">
+                <span class="badge badge-primary">Academic</span>
+                <span class="badge badge-neutral">Campus</span>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card-icon" aria-hidden="true">💼</div>
+              <h3 class="feature-card-title">Career Tools</h3>
+              <p class="feature-card-desc">Help students prepare for internships, jobs, and professional growth.</p>
+              <div class="feature-meta">
+                <span class="badge badge-primary">Career</span>
+                <span class="badge badge-neutral">Internships</span>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card-icon" aria-hidden="true">📚</div>
+              <h3 class="feature-card-title">Resources</h3>
+              <p class="feature-card-desc">Curated learning material and references in one accessible resource hub.</p>
+              <div class="feature-meta">
+                <span class="badge badge-primary">Learn</span>
+                <span class="badge badge-neutral">Discover</span>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card-icon" aria-hidden="true">⌘</div>
+              <h3 class="feature-card-title">Developer Utilities</h3>
+              <p class="feature-card-desc">Built-in utilities for students who code, build, and ship ideas quickly.</p>
+              <div class="feature-meta">
+                <span class="badge badge-primary">Build</span>
+                <span class="badge badge-neutral">Ship</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Vision</div>
+            <h2 class="type-section">A student-first platform with long-term ambition.</h2>
+            <p>
+              SPARIX is designed to evolve into a complete academic ecosystem — with AI integration,
+              stronger personalization, and more connected career pathways over time.
+            </p>
+          </div>
+
+          <div class="vision-grid">
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">Student-first approach</h3>
+                <p class="card-description">Every product decision is shaped by the realities of student workflows.</p>
+              </div>
+            </article>
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">AI integration</h3>
+                <p class="card-description">Future features will help students move from intent to action faster.</p>
+              </div>
+            </article>
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">Academic ecosystem</h3>
+                <p class="card-description">A connected layer across studying, planning, and everyday organization.</p>
+              </div>
+            </article>
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">Career ecosystem</h3>
+                <p class="card-description">Tools that support resumes, preparation, and professional momentum.</p>
+              </div>
+            </article>
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">Long-term growth</h3>
+                <p class="card-description">A durable platform that scales as students’ ambitions expand.</p>
+              </div>
+            </article>
+            <article class="vision-card card">
+              <div class="card-body">
+                <h3 class="card-title">Premium usability</h3>
+                <p class="card-description">Minimal, elegant interfaces that feel trustworthy and easy to use.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Founder</div>
+            <h2 class="type-section">Built with a clear vision and a student-centered motivation.</h2>
+          </div>
+
+          <div class="founder-grid">
+            <div class="founder-image" aria-label="Founder image placeholder">
+              <div class="founder-mark" aria-hidden="true">F</div>
+            </div>
+
+            <article class="card">
+              <div class="card-body">
+                <h3 class="card-title mb-4">Founder story</h3>
+                <p>
+                  SPARIX started with a simple observation: students are expected to manage too many tools,
+                  tabs, deadlines, and career tasks at once. The goal was to create one premium environment
+                  that feels focused, calm, and capable.
+                </p>
+                <p>
+                  The motivation behind SPARIX is to help learners stay organized and confident — not only
+                  while studying, but also while applying for internships, building projects, and preparing
+                  for the future.
+                </p>
+                <div class="hero-actions mt-6">
+                  <a class="btn btn-outline" href="contact.html">Contact the Team</a>
+                  <a class="btn btn-primary" href="resources.html">Browse Resources</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Roadmap</div>
+            <h2 class="type-section">A phased build toward a complete student ecosystem.</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 1</div>
+              <div>
+                <div class="timeline-title">Foundation</div>
+                <p class="mb-0">Define the design system, structure, and core product architecture.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 2</div>
+              <div>
+                <div class="timeline-title">Student OS</div>
+                <p class="mb-0">Launch the primary tools students need for daily productivity.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 3</div>
+              <div>
+                <div class="timeline-title">College Hub</div>
+                <p class="mb-0">Expand into campus workflows, academic planning, and student support.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 4</div>
+              <div>
+                <div class="timeline-title">Career Hub</div>
+                <p class="mb-0">Introduce career tools for internships, jobs, and professional readiness.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 5</div>
+              <div>
+                <div class="timeline-title">Developer Hub</div>
+                <p class="mb-0">Deliver utilities for coding, building, and shipping student projects.</p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div class="timeline-phase">Phase 6</div>
+              <div>
+                <div class="timeline-title">AI Features</div>
+                <p class="mb-0">Add intelligent support to help students plan, create, and execute faster.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-kicker">Why Students Need SPARIX</div>
+            <h2 class="type-section">Better organization. Better access. Better outcomes.</h2>
+          </div>
+
+          <div class="stats-strip mb-8">
+            <article class="stats-card">
+              <div class="stats-card-header">
+                <span class="stats-card-label">Productivity</span>
+                <div class="stats-card-icon" aria-hidden="true">⟡</div>
+              </div>
+              <div class="stats-card-value" data-count-up="78">78</div>
+              <div class="stats-card-desc">More structure when your tools live in one system.</div>
+            </article>
+
+            <article class="stats-card">
+              <div class="stats-card-header">
+                <span class="stats-card-label">Organization</span>
+                <div class="stats-card-icon" aria-hidden="true">☰</div>
+              </div>
+              <div class="stats-card-value" data-count-up="92">92</div>
+              <div class="stats-card-desc">Less time lost switching between apps and tabs.</div>
+            </article>
+
+            <article class="stats-card">
+              <div class="stats-card-header">
+                <span class="stats-card-label">Career Growth</span>
+                <div class="stats-card-icon" aria-hidden="true">↗</div>
+              </div>
+              <div class="stats-card-value" data-count-up="64">64</div>
+              <div class="stats-card-desc">A clearer path from learning to opportunity.</div>
+            </article>
+
+            <article class="stats-card">
+              <div class="stats-card-header">
+                <span class="stats-card-label">Accessibility</span>
+                <div class="stats-card-icon" aria-hidden="true">⌂</div>
+              </div>
+              <div class="stats-card-value" data-count-up="100">100</div>
+              <div class="stats-card-desc">All your essentials accessible in one polished experience.</div>
+            </article>
+          </div>
+
+          <div class="benefit-grid">
+            <article class="benefit-card card">
+              <div class="card-body">
+                <h3 class="card-title">Productivity</h3>
+                <p class="card-description">Focused tools reduce friction and keep your day moving cleanly.</p>
+              </div>
+            </article>
+            <article class="benefit-card card">
+              <div class="card-body">
+                <h3 class="card-title">Organization</h3>
+                <p class="card-description">Centralized structure makes tasks, notes, and resources easier to manage.</p>
+              </div>
+            </article>
+            <article class="benefit-card card">
+              <div class="card-body">
+                <h3 class="card-title">Career Growth</h3>
+                <p class="card-description">Build skills and prepare for internships and jobs with intention.</p>
+              </div>
+            </article>
+            <article class="benefit-card card">
+              <div class="card-body">
+                <h3 class="card-title">Resource Accessibility</h3>
+                <p class="card-description">Find useful material quickly without digging through clutter.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell">
+        <div class="container">
+          <div class="cta-panel text-center">
+            <div class="section-kicker">Call To Action</div>
+            <h2 class="type-section">Start Building Your Future With SPARIX</h2>
+            <p class="mx-auto" style="max-width: 760px;">
+              Explore the Student OS, discover useful resources, and experience a premium platform designed
+              to support students, learners, interns, job seekers, and developers.
+            </p>
+            <div class="hero-actions justify-center">
+              <a class="btn btn-primary btn-lg" href="student-os.html">Get Started</a>
+              <a class="btn btn-outline btn-lg" href="contact.html">Contact SPARIX</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a class="navbar-brand" href="index.html" aria-label="SPARIX Home">
+              <div class="navbar-brand-logo" aria-hidden="true">S</div>
+              <div>
+                <div class="navbar-brand-name">SPARIX</div>
+                <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+              </div>
+            </a>
+            <p>Premium student software for productivity, college, career, resources, and developer tools.</p>
+            <div class="footer-socials" aria-label="Social links">
+              <a class="social-link" href="#" aria-label="Twitter / X">X</a>
+              <a class="social-link" href="#" aria-label="LinkedIn">in</a>
+              <a class="social-link" href="#" aria-label="GitHub">GH</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Quick Links</div>
+            <div class="footer-links">
+              <a class="footer-link" href="index.html">Home</a>
+              <a class="footer-link" href="student-os.html">Student OS</a>
+              <a class="footer-link" href="about.html">About</a>
+              <a class="footer-link" href="contact.html">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Resources</div>
+            <div class="footer-links">
+              <a class="footer-link" href="resources.html">Resource Hub</a>
+              <a class="footer-link" href="developer.html">Developer Utilities</a>
+              <a class="footer-link" href="#">Privacy Policy</a>
+              <a class="footer-link" href="#">Terms</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Social Links</div>
+            <div class="footer-links">
+              <a class="footer-link" href="#">Instagram</a>
+              <a class="footer-link" href="#">YouTube</a>
+              <a class="footer-link" href="#">Discord</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>© 2026 SPARIX. All rights reserved.</p>
+          <p>Study. Build. Grow.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    // Page-specific JavaScript only
+    document.addEventListener('DOMContentLoaded', () => {
+      DashboardUtils?.initCountUps?.();
+
+      const toggle = document.querySelector('.navbar-toggle');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      if (toggle && mobileNav) {
+        toggle.addEventListener('click', () => {
+          const isOpen = mobileNav.classList.contains('open');
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            toggle.classList.remove('open');
+            mobileNav.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+sparix/
+
+index.html
+
+about.html
+
+contact.html
+
+student-os.html
+college-hub.html
+career-hub.html
+resources.html
+developer-hub.html
+
+main.css
+main.js
+
+assets/
+│
+├── images/
+├── icons/
+└── logos/
+
+student/
+│
+├── student-dash-os.html
+│
+├── productivity/
+│   ├── pomodoro.html
+│   ├── task-manager.html
+│   ├── planner.html
+│   ├── notes.html
+│   └── flashcards.html
+│
+├── college/
+│   ├── attendance.html
+│   ├── attendance-predictor.html
+│   ├── gpa-calculator.html
+│   ├── cgpa-calculator.html
+│   ├── sgpa-calculator.html
+│   ├── marks-calculator.html
+│   ├── grade-predictor.html
+│   ├── timetable.html
+│   └── exam-countdown.html
+│
+├── career/
+│   ├── resume-builder.html
+│   ├── ats-checker.html
+│   ├── portfolio-generator.html
+│   ├── internship-tracker.html
+│   └── placement-tracker.html
+│
+└── resources/
+    ├── notes-repository.html
+    ├── study-materials.html
+    ├── semester-resources.html
+    └── downloads.html

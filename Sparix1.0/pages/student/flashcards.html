@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcards — SPARIX</title>
+  <link rel="stylesheet" href="../../main.css" />
+  <style>
+    /* Flashcards grid */
+    #fc-library {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-5);
+    }
+
+    /* Library cards */
+    .fc-lib-card {
+      margin-bottom: var(--space-3);
+      transition: box-shadow var(--transition-fast);
+    }
+
+    .fc-lib-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    /* Review panel */
+    #review-panel {
+      display: none;
+    }
+
+    .review-scene {
+      width: 100%;
+      max-width: 480px;
+      height: 280px;
+      margin: 0 auto var(--space-6);
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    #review-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(.4, 2, .55, .44);
+    }
+
+    #review-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .review-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .review-front {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-mid);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .review-back {
+      background: linear-gradient(135deg, var(--deep-espresso), var(--antique-wood));
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    .review-face p {
+      font-size: var(--text-lg);
+      text-align: center;
+      font-weight: var(--weight-medium);
+    }
+
+    .review-face .label {
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wider);
+      opacity: .6;
+      margin-bottom: var(--space-3);
+    }
+
+    .review-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .review-meta {
+      text-align: center;
+      margin-bottom: var(--space-4);
+    }
+
+    /* Layout helpers */
+    .fc-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    @media (max-width: 768px) {
+      .fc-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="navbar">
+    <div class="navbar-inner container">
+      <a class="navbar-brand" href="../../index.html" aria-label="SPARIX Home">
+        <div class="navbar-brand-logo">S</div>
+        <div>
+          <div class="navbar-brand-name">SPARIX</div>
+          <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+        </div>
+      </a>
+
+      <nav class="navbar-nav" aria-label="Primary">
+        <a class="nav-link" href="../../index.html">Home</a>
+        <a class="nav-link" href="../../student-os.html">Student OS</a>
+        <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+        <a class="nav-link" href="tasks.html">Tasks</a>
+        <a class="nav-link" href="planner.html">Planner</a>
+        <a class="nav-link" href="notes.html">Notes</a>
+        <a class="nav-link active" href="flashcards.html">Flashcards</a>
+        <a class="nav-link" href="assignments.html">Assignments</a>
+      </nav>
+
+      <div class="navbar-actions">
+        <a class="btn btn-primary btn-sm hide-sm" href="../../student-os.html">Dashboard</a>
+        <button class="navbar-toggle" type="button" aria-label="Open menu" aria-controls="mobile-nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile primary">
+    <a class="nav-link" href="../../index.html">Home</a>
+    <a class="nav-link" href="../../student-os.html">Student OS</a>
+    <a class="nav-link" href="pomodoro.html">Pomodoro</a>
+    <a class="nav-link" href="tasks.html">Tasks</a>
+    <a class="nav-link" href="planner.html">Planner</a>
+    <a class="nav-link" href="notes.html">Notes</a>
+    <a class="nav-link active" href="flashcards.html">Flashcards</a>
+    <a class="nav-link" href="assignments.html">Assignments</a>
+  </nav>
+
+  <main class="main-content">
+    <div class="dashboard-wrapper container">
+
+      <nav class="breadcrumbs mb-6">
+        <span class="breadcrumb-item"><a href="../../student-os.html">Student OS</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item"><a href="../../student-os.html#productivity">Productivity</a></span>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-item active">Flashcards</span>
+      </nav>
+
+      <div class="dashboard-section">
+        <div class="feature-card">
+          <div class="dashboard-greeting">Productivity · Learning</div>
+          <h1 class="dashboard-title">Flashcards</h1>
+          <p class="dashboard-subtitle">Create, review, and master your study material in one focused workspace.</p>
+        </div>
+      </div>
+
+      <!-- Creator -->
+      <div class="dashboard-section" id="fc-creator">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">Create Flashcard</h2>
+        </div>
+        <div class="card card-body">
+          <form id="fc-form" onsubmit="return false;">
+            <div class="fc-form-grid">
+              <div class="form-group">
+                <label class="form-label">Subject</label>
+                <input type="text" id="fc-subject" class="input" placeholder="e.g. Biology" />
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label">Front (Question) <span class="required">*</span></label>
+                <textarea id="fc-front" class="textarea" rows="3" placeholder="Question or term..."></textarea>
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <label class="form-label">Back (Answer) <span class="required">*</span></label>
+                <textarea id="fc-back" class="textarea" rows="3" placeholder="Answer or definition..."></textarea>
+              </div>
+            </div>
+
+            <div class="flex gap-3 mt-4">
+              <button id="fc-submit-btn" class="btn btn-primary">Add Card</button>
+              <button id="fc-cancel-btn" type="button" class="btn btn-ghost">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Review Mode -->
+      <div class="dashboard-section">
+        <div id="review-panel" class="card card-body">
+          <div class="review-meta">
+            <span class="badge badge-secondary" id="review-subject">Subject</span>
+            <p class="text-muted text-sm mt-2">Click card to flip · <span id="review-progress">1/1</span></p>
+          </div>
+
+          <div class="review-scene">
+            <div id="review-card">
+              <div class="review-face review-front">
+                <span class="label">Question</span>
+                <p id="review-front">...</p>
+              </div>
+              <div class="review-face review-back">
+                <span class="label">Answer</span>
+                <p id="review-back">...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-controls">
+            <button id="btn-review-prev" class="btn btn-ghost">‹ Previous</button>
+            <button id="btn-stop-review" class="btn btn-secondary">✕ Stop Review</button>
+            <button id="btn-review-next" class="btn btn-primary">Next ›</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Library -->
+      <div class="dashboard-section" id="fc-library-section">
+        <div class="dashboard-section-header">
+          <h2 class="dashboard-section-title">Flashcard Library</h2>
+        </div>
+
+        <div class="toolbar mb-4" style="display:flex;justify-content:space-between;align-items:center;gap:var(--space-3);flex-wrap:wrap;">
+          <div></div>
+          <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;align-items:center;">
+            <select id="fc-filter-subject" class="select" style="min-width:160px;">
+              <option value="all">All Subjects</option>
+            </select>
+            <button id="btn-random-review" class="btn btn-ghost btn-sm">🔀 Random</button>
+            <button id="btn-start-review" class="btn btn-primary btn-sm">▶ Start Review</button>
+          </div>
+        </div>
+
+        <div id="fc-library"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="navbar-brand">
+            <div class="navbar-brand-logo">S</div>
+            <div>
+              <div class="navbar-brand-name">SPARIX</div>
+              <div class="navbar-brand-tagline">Study. Build. Grow.</div>
+            </div>
+          </div>
+          <p>Premium student operating system designed for elegant, focused, and real academic workflows.</p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Productivity</div>
+          <div class="footer-links">
+            <a class="footer-link" href="pomodoro.html">Pomodoro</a>
+            <a class="footer-link" href="tasks.html">Tasks</a>
+            <a class="footer-link" href="planner.html">Planner</a>
+            <a class="footer-link" href="notes.html">Notes</a>
+            <a class="footer-link" href="flashcards.html">Flashcards</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Student OS</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../student-os.html">Dashboard</a>
+            <a class="footer-link" href="../../student-os.html#productivity">Productivity</a>
+            <a class="footer-link" href="../../student-os.html#college-tools">College Tools</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">About</div>
+          <div class="footer-links">
+            <a class="footer-link" href="../../about.html">About</a>
+            <a class="footer-link" href="../../contact.html">Contact</a>
+            <a class="footer-link" href="../../privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SPARIX</p>
+        <p>All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    const toggle = document.querySelector('.navbar-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    toggle?.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.classList.contains('open')) return;
+      if (!mobileNav.contains(e.target) && !toggle.contains(e.target)) {
+        mobileNav.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+<script src="../../main.js"></script>
+<script src="../../js/flashcards.js"></script>
+</body>
+</html>
